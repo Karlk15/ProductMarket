@@ -1,0 +1,10 @@
+<p>
+  seller-list works!
+</p>
+
+<ul>
+  <li *ngFor="let seller of sellers">
+    <a routerLink="" (click)="onClickSeller(seller)">{{seller.name}}</a>
+    {{seller.category}}
+  </li>
+</ul>
