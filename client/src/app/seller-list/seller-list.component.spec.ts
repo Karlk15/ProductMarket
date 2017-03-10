@@ -6,7 +6,7 @@ import { DebugElement } from '@angular/core';
 import { SellerListComponent } from './seller-list.component';
 import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { } from 'jasmine';
 
 describe('SellerListComponent', () => {

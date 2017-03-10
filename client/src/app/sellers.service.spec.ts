@@ -58,4 +58,6 @@ describe('SellersService', () => {
           expect(seller[0].imagePath).toBe('http://imgur.com/r/cats/xXYgX7h');
       });
   }));
+
+  it('should get single seller by id',)
 });
