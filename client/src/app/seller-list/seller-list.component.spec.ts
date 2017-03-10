@@ -23,8 +23,8 @@ describe('SellerListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SellerListComponent ],
       providers: [
-        {provider: SellersService, useValue: mockService},
-        {provider: Router, useValue: mockRouter}
+        {provide: SellersService, useValue: mockService},
+        {provide: Router, useValue: mockRouter}
       ]
     })
     .compileComponents();
@@ -39,4 +39,5 @@ describe('SellerListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

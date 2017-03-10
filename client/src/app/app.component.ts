@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent{
-  title = 'app works!';
+  title = 'Welcome to the Market Place';
 
   constructor(){}
 

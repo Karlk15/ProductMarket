@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SellersService, Seller } from '../sellers.service';
+import { SellersService} from '../sellers.service';
 import { Router, ActivatedRoute  } from '@angular/router';
+import { Seller } from '../interfaces/seller';
 
 @Component({
   selector: 'app-seller-details',

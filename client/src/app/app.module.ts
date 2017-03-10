@@ -9,17 +9,21 @@ import { AppComponent } from './app.component';
 import { SellerListComponent} from './seller-list/seller-list.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
 import { SellersService } from './sellers.service';
+import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     SellerListComponent,
-    SellerDetailsComponent
+    SellerDetailsComponent,
+    SellerDlgComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([{
       path: '',
       redirectTo: 'sellers',
@@ -30,6 +34,9 @@ import { SellersService } from './sellers.service';
       }, {
         path: 'seller/:id',
         component: SellerDetailsComponent
+      }, {
+        path: 'newSeller',
+        component: SellerDlgComponent
       }])
   ],
   providers: [SellersService],
