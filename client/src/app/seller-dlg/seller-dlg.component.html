@@ -1,3 +1,17 @@
-<p>
-  seller-dlg works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title">Add or Edit Seller</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onClickCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <input [(ngModel)]="updateSeller.name" placeholder="Enter new seller name" autofocus/>
+  <input [(ngModel)]="updateSeller.category" placeholder="Enter new category"/>
+  <input [(ngModel)]="updateSeller.imagePath" placeholder="Enter new image path"/>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="onClickOK()">Add/Edit</button>
+  <button type="button" class="btn btn-warning" (click)="onClickCancel()">Cancel</button>
+</div>

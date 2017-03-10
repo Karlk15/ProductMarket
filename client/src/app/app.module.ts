@@ -40,6 +40,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       }])
   ],
   providers: [SellersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SellerDlgComponent]
 })
 export class AppModule { }

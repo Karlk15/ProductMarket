@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Seller } from '../interfaces/seller';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-seller-dlg',
@@ -7,13 +8,24 @@ import { Seller } from '../interfaces/seller';
   styleUrls: ['./seller-dlg.component.css']
 })
 export class SellerDlgComponent implements OnInit {
+  
+  @Input()
+  updateSeller: Seller;
 
-  private newSeller: Seller;
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
-    
+
   }
+
+  onClickOK() {
+    this.activeModal.close(this.updateSeller);
+  }
+
+  onClickCancel () {
+    this.activeModal.dismiss();
+  }
+
 
 }

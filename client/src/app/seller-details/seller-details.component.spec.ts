@@ -40,4 +40,6 @@ describe('SellerDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  }));
 });

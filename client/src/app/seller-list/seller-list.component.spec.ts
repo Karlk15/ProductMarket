@@ -39,5 +39,4 @@ describe('SellerListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });
