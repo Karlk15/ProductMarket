@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService} from '../sellers.service';
-import { Router, ActivatedRoute  } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Seller } from '../interfaces/seller';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-seller-details',
@@ -11,6 +12,7 @@ import { Seller } from '../interfaces/seller';
 export class SellerDetailsComponent implements OnInit {
 
   private sellerDetails: Seller;
+  private sellersService: SellersService;
   private sellerID: number;
 
   constructor(private service: SellersService,
@@ -18,9 +20,10 @@ export class SellerDetailsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.sellerID = this.route.snapshot.params['id'];
-
-    //this.
+    this.route.params.subscribe((params: Params) => {
+    this.sellerID = +params['id'];
+    console.log(this.sellerID);
+    })
   }
 
 }
