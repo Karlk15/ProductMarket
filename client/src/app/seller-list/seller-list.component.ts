@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SellersService, Seller } from '../sellers.service';
+import { SellersService } from '../sellers.service';
+import { Seller } from '../interfaces/seller';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
 
 @Component({
   selector: 'app-seller-list',
@@ -12,11 +15,12 @@ export class SellerListComponent implements OnInit {
   private sellers: Seller[];
 
   constructor(private service: SellersService,
-              private router: Router) { }
+              private router: Router,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
 
-    // render list of all sellers
+    // get list of all sellers
     this.service.getSellers().subscribe( allSellers => {
       this.sellers = allSellers;
     });
@@ -26,6 +30,11 @@ export class SellerListComponent implements OnInit {
   onClickSeller(seller: Seller) {
     
     this.router.navigate(['/seller', seller.id]);
+  }
+
+  onAddSeller() {
+    const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
+    //sellerDlgInstance.
   }
 
 }

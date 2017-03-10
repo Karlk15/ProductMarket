@@ -2,14 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-//import { Seller } from '../interfaces/seller';
-
-export interface Seller {
-  id: number;
-  name: string;
-  category: string;
-  imagePath: string;
-}
+import { Seller } from './interfaces/seller';
 
 @Injectable()
 export class SellersService {
@@ -32,6 +25,8 @@ export class SellersService {
       return <Seller> response.json();   
     });
       
-    }
+  }
+
+
 
 }
