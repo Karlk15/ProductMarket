@@ -10,6 +10,7 @@ import { SellerListComponent} from './seller-list/seller-list.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
 import { SellersService } from './sellers.service';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import { ToastrModule } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -23,6 +24,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToastrModule.forRoot({preventDuplicates: true}),
     NgbModule.forRoot(),
     RouterModule.forRoot([{
       path: '',
