@@ -1,3 +1,14 @@
 <p>
-{{sellerID}}  
+  {{sellerID}}
 </p>
+
+<div *ngIf="products">
+  <ul>
+    <li *ngFor="let product of products">
+      <!-- <img src="{{product.imagePath}}" /> -->
+      <p>
+        {{product.name}} Price: {{product.price}}
+      </p>
+    </li>
+  </ul>
+</div>

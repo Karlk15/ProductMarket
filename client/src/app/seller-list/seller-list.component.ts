@@ -15,20 +15,19 @@ export class SellerListComponent implements OnInit {
   private sellers: Seller[];
 
   constructor(private service: SellersService,
-              private router: Router,
-              private modalService: NgbModal) { }
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
 
     // get list of all sellers
-    this.service.getSellers().subscribe( allSellers => {
+    this.service.getSellers().subscribe(allSellers => {
       this.sellers = allSellers;
     });
 
   }
 
   onClickSeller(seller: Seller) {
-    
     this.router.navigate(['/seller', seller.id]);
   }
 
