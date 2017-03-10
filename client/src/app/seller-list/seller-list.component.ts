@@ -33,8 +33,19 @@ export class SellerListComponent implements OnInit {
   }
 
   onAddSeller() {
+
     const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
-    //sellerDlgInstance.
+
+    sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
+    
+    sellerDlgInstance.result.then(obj => {
+      console.log("Dialog closed");
+      console.log(obj);
+    }).catch( err => {
+      console.log("Dialog canceled");
+      console.log(err);
+    });
+
   }
 
 }
