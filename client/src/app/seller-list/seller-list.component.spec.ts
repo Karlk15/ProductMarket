@@ -7,10 +7,13 @@ import { SellerListComponent } from './seller-list.component';
 import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
 import { Router} from '@angular/router';
+import { } from 'jasmine';
 
 describe('SellerListComponent', () => {
   let component: SellerListComponent;
   let fixture: ComponentFixture<SellerListComponent>;
+
+  let mockService = new MockService();
 
   let mockRouter = {
 	  navigate: jasmine.createSpy("navigate")	
@@ -20,7 +23,7 @@ describe('SellerListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SellerListComponent ],
       providers: [
-        {provider: SellersService, useValue: MockService},
+        {provider: SellersService, useValue: mockService},
         {provider: Router, useValue: mockRouter}
       ]
     })

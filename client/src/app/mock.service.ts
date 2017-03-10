@@ -7,9 +7,10 @@ import { Seller } from './sellers.service';
 @Injectable()
 export class MockService {
 
-  sellerList: Seller[];
+  private sellerList: Seller[];
 
   constructor() { 
+    this.sellerList = [];
     this.sellerList.push({id: 0, name: 'Kalli', category: 'Womens Clothing', imagePath: 'http://imgur.com/gallery/etjgJ2D'});
     this.sellerList.push({id: 1, name: 'Keli', category: 'Pandas', imagePath: 'http://imgur.com/r/panda/xhE1cN4'});
     this.sellerList.push({id: 2, name: 'Danni', category: 'Cats', imagePath: 'http://imgur.com/r/cats/xXYgX7h'});    
@@ -19,5 +20,5 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
-  
+
 }
