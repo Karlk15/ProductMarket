@@ -2,13 +2,8 @@
   {{sellerID}}
 </p>
 
-<div *ngIf="products">
-  <ul>
-    <li *ngFor="let product of products">
-      <!-- <img src="{{product.imagePath}}" /> -->
-      <p>
-        {{product.name}} Price: {{product.price}}
-      </p>
-    </li>
-  </ul>
+<div *ngFor="let p of products">
+  <app-product-card [sellerProduct]="p">
+
+  </app-product-card>
 </div>
