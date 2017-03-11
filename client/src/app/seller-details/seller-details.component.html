@@ -2,8 +2,16 @@
   {{sellerID}}
 </p>
 
-<div *ngFor="let p of products">
-  <app-product-card [sellerProduct]="p">
 
-  </app-product-card>
+
+<div class="container body-content">
+  <div class="row" style="display: block;">
+    <div *ngFor="let p of products">
+      <div class="col-sm-6 col-md-4" style="float: left">
+        <app-product-card [sellerProduct]="p">
+
+        </app-product-card>
+      </div>
+    </div>
+  </div>
 </div>
