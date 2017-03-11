@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-import { Seller } from './sellers.service';
+import { Seller } from './interfaces/seller';
 
 @Injectable()
 export class MockService {
@@ -20,5 +20,5 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
-  
+
 }

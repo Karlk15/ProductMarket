@@ -59,5 +59,32 @@ describe('SellersService', () => {
       });
   }));
 
-  it('should get single seller by id',)
+  it('should get single seller by id', async(() => {
+    let sellersService: SellersService = getTestBed().get(SellersService);
+    mockBackend.connections.subscribe(
+      (connection: MockConnection) => {
+        expect(connection.request.url).toMatch('http://localhost:5000/api/sellers/2');
+        connection.mockRespond(
+          new Response(
+            new ResponseOptions({
+              body: {
+                id: 2,
+                name: 'Keli',
+                category: 'Pandas',
+                imagePath: 'http://imgur.com/r/panda/xhE1cN4'
+              }
+            }))
+        );
+      }
+    );
+    
+    sellersService.getSellerById(2).subscribe((seller) => {
+      expect(seller.id).toBe(2);
+      expect(seller.name).toBe('Keli');
+      expect(seller.category).toBe('Pandas');
+      expect(seller.imagePath).toBe('http://imgur.com/r/panda/xhE1cN4');
+    });
+
+  }));
+
 });
