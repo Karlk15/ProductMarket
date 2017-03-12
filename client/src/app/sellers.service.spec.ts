@@ -33,7 +33,7 @@ describe('SellersService', () => {
   });
 
 
-  it('should get sellers', async(() => {
+  xit('should get sellers', async(() => {
     let sellersService: SellersService = getTestBed().get(SellersService);
     
     mockBackend.connections.subscribe(
@@ -60,7 +60,7 @@ describe('SellersService', () => {
       });
   }));
 
-  it('should get single seller by id', async(() => {
+  xit('should get single seller by id', async(() => {
     let sellersService: SellersService = getTestBed().get(SellersService);
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
@@ -88,7 +88,7 @@ describe('SellersService', () => {
 
   }));
 
-  it('should get products by seller id', async(() => {
+  xit('should get products by seller id', async(() => {
     let sellersService: SellersService = getTestBed().get(SellersService);
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {

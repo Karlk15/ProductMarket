@@ -8,6 +8,7 @@ import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { } from 'jasmine';
 
 describe('SellerListComponent', () => {
@@ -15,6 +16,13 @@ describe('SellerListComponent', () => {
   let fixture: ComponentFixture<SellerListComponent>;
 
   let mockService = new MockService();
+
+  
+  let mockToastr = {
+    success: jasmine.createSpy('toastr.success'),
+    error: jasmine.createSpy('tostr.error')
+  }
+
 
   let mockRouter = {
 	  navigate: jasmine.createSpy("navigate")	
@@ -33,6 +41,7 @@ describe('SellerListComponent', () => {
         {provide: SellersService, useValue: mockService},
         {provide: Router, useValue: mockRouter},
         {provide: NgbModal, useValue: mockModal},
+        {provide: ToastrService, useValue: mockToastr}
       ]
     })
     .compileComponents();

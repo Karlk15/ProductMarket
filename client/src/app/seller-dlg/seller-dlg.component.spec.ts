@@ -5,6 +5,7 @@ import { DebugElement, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SellerDlgComponent } from './seller-dlg.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 describe('SellerDlgComponent', () => {
   let component: SellerDlgComponent;
@@ -14,6 +15,11 @@ describe('SellerDlgComponent', () => {
         open: jasmine.createSpy('modal.open').and.returnValue({ result: { then: jasmine.createSpy('modal.result.then') } }),
         close: jasmine.createSpy('modal.close'),
         dismiss: jasmine.createSpy('modal.dismiss')
+  };
+
+    let mockToastr = {
+      success: jasmine.createSpy('toastr.success'),
+      error: jasmine.createSpy('tostr.error')
     };
 
   beforeEach(async(() => {
@@ -21,6 +27,7 @@ describe('SellerDlgComponent', () => {
       declarations: [ SellerDlgComponent ],
       providers: [
         { provide: NgbActiveModal, useValue: mockModal },
+        {provide: ToastrService, useValue: mockToastr}
       ],
       imports: [ FormsModule ],
     })

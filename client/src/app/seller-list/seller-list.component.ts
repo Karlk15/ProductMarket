@@ -18,10 +18,9 @@ export class SellerListComponent implements OnInit {
   constructor(private service: SellersService,
               private router: Router,
               private modalService: NgbModal,
-              private toastrService: ToastrService,
-              private toastrConfig: ToastrConfig) { 
-                  toastrConfig.timeOut = 1000;
-                  toastrConfig.maxOpened = 0;
+              private toastrService: ToastrService) { 
+                  //toastrConfig.timeOut = 1000;
+                  //toastrConfig.maxOpened = 0;
                }
 
   ngOnInit() {
@@ -41,10 +40,11 @@ export class SellerListComponent implements OnInit {
 
     const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
 
-    sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
+    //sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
     
     sellerDlgInstance.result.then(newSeller => {
       
+      // call addSeller func in service to post new seller to server
       this.service.addSeller(newSeller).subscribe( succeeded => {
         this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
       });
