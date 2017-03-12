@@ -21,7 +21,8 @@ describe('SellerDlgComponent', () => {
       declarations: [ SellerDlgComponent ],
       providers: [
         { provide: NgbActiveModal, useValue: mockModal },
-      ]
+      ],
+      imports: [ FormsModule ],
     })
     .compileComponents();
   }));

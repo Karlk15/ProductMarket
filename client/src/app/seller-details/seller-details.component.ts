@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Seller } from '../interfaces/seller';
 import { Observable } from 'rxjs/Rx';
 import { Product } from '../interfaces/product';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
   selector: 'app-seller-details',
