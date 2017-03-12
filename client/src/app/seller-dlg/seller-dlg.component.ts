@@ -19,6 +19,8 @@ export class SellerDlgComponent implements OnInit {
               private toastrService: ToastrService) { 
                 //toastrConfig.timeOut = 1000;
                 //toastrConfig.maxOpened = 0;
+                this.updateSeller = {id: undefined, name: '', category: '', imagePath: ''}
+                
                }
 
   ngOnInit() {

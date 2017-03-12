@@ -8,7 +8,7 @@ import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService, ToastConfig } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { } from 'jasmine';
 
 describe('SellerListComponent', () => {
