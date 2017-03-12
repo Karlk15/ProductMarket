@@ -123,4 +123,5 @@ describe('SellersService', () => {
       expect(product[0].product.imagePath).toBe('http://i.imgur.com/MZOmRnH.jpg');
     })
   }));
+
 });

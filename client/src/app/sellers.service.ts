@@ -25,6 +25,14 @@ export class SellersService {
       .map(response => {
         return <Seller>response.json();
       });
+  }
+
+  addSeller(newSeller: Seller) : Observable<Seller> {
+
+    return this.http.post('http://localhost:5000/api/sellers', newSeller)
+      .map(response => {
+        return <Seller> response.json();
+      });
 
   }
 
@@ -34,4 +42,5 @@ export class SellersService {
         return <Product[]>response.json();
       });
   }
+
 }

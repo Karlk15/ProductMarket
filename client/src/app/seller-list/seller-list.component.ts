@@ -4,6 +4,7 @@ import { Seller } from '../interfaces/seller';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
+import { ToastrService, ToastrConfig } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller-list',
@@ -15,8 +16,13 @@ export class SellerListComponent implements OnInit {
   private sellers: Seller[];
 
   constructor(private service: SellersService,
-    private router: Router,
-    private modalService: NgbModal) { }
+              private router: Router,
+              private modalService: NgbModal,
+              private toastrService: ToastrService,
+              private toastrConfig: ToastrConfig) { 
+                  toastrConfig.timeOut = 1000;
+                  toastrConfig.maxOpened = 0;
+               }
 
   ngOnInit() {
 
@@ -37,12 +43,14 @@ export class SellerListComponent implements OnInit {
 
     sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
     
-    sellerDlgInstance.result.then(obj => {
-      console.log("Dialog closed");
-      console.log(obj);
+    sellerDlgInstance.result.then(newSeller => {
+      
+      this.service.addSeller(newSeller).subscribe( succeeded => {
+        this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
+      });
+      
     }).catch( err => {
-      console.log("Dialog canceled");
-      console.log(err);
+      this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
 
   }
