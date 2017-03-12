@@ -2,13 +2,15 @@
   {{sellerID}}
 </p>
 
-<div *ngIf="products">
-  <ul>
-    <li *ngFor="let product of products">
-      <!-- <img src="{{product.imagePath}}" /> -->
-      <p>
-        {{product.name}} Price: {{product.price}}
-      </p>
-    </li>
-  </ul>
+
+
+<div class="container body-content">
+  <div class="row" style="display: block;">
+    <div *ngFor="let p of products">
+      <div class="col-sm-6 col-md-4" style="float: left">
+        <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
+        </app-product-card>
+      </div>
+    </div>
+  </div>
 </div>

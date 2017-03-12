@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Seller } from './interfaces/seller';
 import { Product } from './interfaces/product';
+
 @Injectable()
 export class SellersService {
 
@@ -35,10 +36,10 @@ export class SellersService {
 
   }
 
-  getProductsById(id: number): Observable<Product> {
+  getProductsById(id: number): Observable<Product[]> {
     return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
       .map(response => {
-        return <Product>response.json();
+        return <Product[]>response.json();
       });
   }
 

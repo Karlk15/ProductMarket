@@ -24,13 +24,17 @@ export class SellerDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-    this.sellerID = +params['id'];
-    console.log(this.sellerID);
+      this.sellerID = +params['id'];
+      console.log(this.sellerID);
     })
 
     this.service.getProductsById(this.sellerID).subscribe(allProducts => {
       this.products = allProducts;
     });
+  }
+
+  onProductEdited(p: Product) {
+    console.log(p);
   }
 
 }
