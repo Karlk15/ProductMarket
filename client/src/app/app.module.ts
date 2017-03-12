@@ -11,6 +11,7 @@ import { SellerDetailsComponent } from './seller-details/seller-details.componen
 import { SellersService } from './sellers.service';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProductCardComponent } from './product-card/product-card.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     SellerListComponent,
     SellerDetailsComponent,
-    SellerDlgComponent
+    SellerDlgComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       path: '',
       redirectTo: 'sellers',
       pathMatch: 'full'
-      }, {
+    }, {
         path: 'sellers',
         component: SellerListComponent
       }, {

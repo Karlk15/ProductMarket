@@ -27,14 +27,13 @@ export class SellerListComponent implements OnInit {
   ngOnInit() {
 
     // get list of all sellers
-    this.service.getSellers().subscribe( allSellers => {
+    this.service.getSellers().subscribe(allSellers => {
       this.sellers = allSellers;
     });
 
   }
 
   onClickSeller(seller: Seller) {
-    
     this.router.navigate(['/seller', seller.id]);
   }
 

@@ -1,12 +1,14 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SellerDetailsComponent } from './seller-details.component';
 import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
-import { Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute, Data, Params } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
 describe('SellerDetailsComponent', () => {
   let component: SellerDetailsComponent;
@@ -18,25 +20,16 @@ describe('SellerDetailsComponent', () => {
 	  navigate: jasmine.createSpy("navigate")	
   };
 
-  let mockActivatedRouter = {
-      snapshot: jasmine.createSpy("snapshot"),
-      params: jasmine.createSpy("params"),
-      id: 1
-  };
-  
-  
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SellerDetailsComponent ],
       providers: [
-        {provide: SellersService, useValue: mockService },
-        {provide: Router, useValue: mockRouter},
-        {provide: ActivatedRoute, useValue: mockActivatedRouter}
+        { provide: SellersService, useValue: mockService },
+        { provide: Router, useValue: mockRouter},
+        { provide: ActivatedRoute, useValue: { params: Observable.of({id: 1}) } },
       ]
     })
-    .compileComponents();
-  }));
+    .compileComponents()
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SellerDetailsComponent);
@@ -47,4 +40,6 @@ describe('SellerDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  }));
 });

@@ -20,5 +20,5 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
-
+  
 }
