@@ -9,6 +9,7 @@
     <div *ngFor="let p of products">
       <div class="col-sm-6 col-md-4" style="float: left">
         <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
+
         </app-product-card>
       </div>
     </div>
