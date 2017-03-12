@@ -21,7 +21,8 @@ describe('SellerDlgComponent', () => {
       declarations: [ SellerDlgComponent ],
       providers: [
         { provide: NgbActiveModal, useValue: mockModal },
-      ]
+      ],
+      imports: [ FormsModule ],
     })
     .compileComponents();
   }));
@@ -32,7 +33,7 @@ describe('SellerDlgComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 
