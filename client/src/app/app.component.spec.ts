@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SellerListComponent} from './seller-list/seller-list.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
 import { Router, RouterModule} from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
 
@@ -30,7 +31,8 @@ describe('AppComponent', () => {
         AppComponent,
         SellerListComponent,
         SellerDetailsComponent
-      ]
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     });
 
     TestBed.compileComponents();
