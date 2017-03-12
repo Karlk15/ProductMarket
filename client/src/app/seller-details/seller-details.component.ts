@@ -33,4 +33,8 @@ export class SellerDetailsComponent implements OnInit {
     });
   }
 
+  onProductEdited(p: Product) {
+    console.log(p);
+  }
+
 }
