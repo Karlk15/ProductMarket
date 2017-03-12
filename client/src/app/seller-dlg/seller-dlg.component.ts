@@ -16,10 +16,9 @@ export class SellerDlgComponent implements OnInit {
 
 
   constructor(public activeModal: NgbActiveModal,
-              private toastrService: ToastrService,
-              private toastrConfig: ToastrConfig) { 
-                toastrConfig.timeOut = 1000;
-                toastrConfig.maxOpened = 0;
+              private toastrService: ToastrService) { 
+                //toastrConfig.timeOut = 1000;
+                //toastrConfig.maxOpened = 0;
                }
 
   ngOnInit() {

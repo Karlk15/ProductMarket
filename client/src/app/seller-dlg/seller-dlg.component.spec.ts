@@ -32,7 +32,7 @@ describe('SellerDlgComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 
