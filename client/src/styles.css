@@ -24,3 +24,13 @@
   height: 190px;
   border-radius: 6px;
 }
+
+#sellerPadding{
+  margin: 25px;
+}
+
+#productsPadding{
+  margin-top: 25px;
+  margin-right: auto;
+  margin-left: auto;
+}
