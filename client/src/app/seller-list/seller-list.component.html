@@ -1,11 +1,14 @@
-<div *ngIf="sellers">
-  <ul>
-    <li *ngFor="let seller of sellers">
-      <img [src]="seller.imagePath" class="imgStyle" />
-      <a routerLink="" (click)="onClickSeller(seller)">{{seller.name}}</a> {{seller.category}}
-    </li>
-  </ul>
+<div>
+  <div *ngIf="sellers">
+    <div>
+      <div *ngFor="let seller of sellers">
+        <img [src]="seller.imagePath" class="imgStyle" />
+        <a routerLink="" (click)="onClickSeller(seller)">{{seller.name}}</a> {{seller.category}}
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <button class="btn btn-primary" (click)="onAddSeller()">New Seller</button>
 
