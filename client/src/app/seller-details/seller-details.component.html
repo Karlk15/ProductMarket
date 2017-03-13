@@ -21,13 +21,24 @@
       </div>
     </template>
   </ngb-tab>
-  <ngb-tab>
-    <template ngbTabTitle><b>Top 10</b> products</template>
+  <ngb-tab title="All Products">
     <template ngbTabContent>
-      <iframe src="//giphy.com/embed/VWjb4jBPSwOLm" width="480" height="345" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <div class="container body-content" id="productsPadding">
+        <div class="row" style="display: block;">
+          <div *ngFor="let p of onClickTopTen()">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="productId">
+              <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
+
+              </app-product-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <iframe src="//giphy.com/embed/VWjb4jBPSwOLm" width="480" height="345" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
       <p>
         <a href="http://giphy.com/gifs/VWjb4jBPSwOLm"></a>
-      </p>
+      </p> -->
     </template>
   </ngb-tab>
 </ngb-tabset>

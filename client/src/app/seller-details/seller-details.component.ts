@@ -17,7 +17,7 @@ export class SellerDetailsComponent implements OnInit {
   private sellersService: SellersService;
   private sellerID: number;
   private products: Product[];
-
+  private topTenProduct: Product[] = new Array(10);
 
   constructor(private service: SellersService,
     private router: Router,
@@ -40,5 +40,31 @@ export class SellerDetailsComponent implements OnInit {
   onProductEdited(p: Product) {
     console.log(p);
   }
+
+
+
+  onClickTopTen(): Product[] {
+
+    function compare(a, b) {
+      if (a.quantitySold > b.quantitySold)
+        return -1;
+      if (a.quantitySold < b.quantitySold)
+        return 1;
+      return 0;
+    }
+
+    let sortedProducts = this.products.slice();
+    sortedProducts = sortedProducts.sort(compare);
+
+    console.log(sortedProducts);
+
+
+    for (let i = 0; i < 10; i++) {
+      this.topTenProduct[i] = sortedProducts[i];
+    }
+
+    return this.topTenProduct;
+  }
+
 
 }
