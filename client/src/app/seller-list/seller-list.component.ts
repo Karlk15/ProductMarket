@@ -45,7 +45,7 @@ export class SellerListComponent implements OnInit {
     sellerDlgInstance.result.then(newSeller => {
       
       // call addSeller func in service to post new seller to server
-      this.service.addSeller(newSeller).subscribe( succeeded => {
+      this.service.addOrEditSeller(newSeller).subscribe( succeeded => {
         this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
       });
       

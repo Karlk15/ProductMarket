@@ -97,15 +97,12 @@ describe('SellersService', () => {
           new Response(
             new ResponseOptions({
               body: [{
-                id: 1,
-                product: {
                   id: 1,
                   name: 'Ullarvettlingar',
                   price: 1899,
                   quantitySold: 500,
                   quantityInStock: 12,
                   imagePath: 'http://i.imgur.com/MZOmRnH.jpg'
-                }
               }]
             }))
         );
@@ -115,12 +112,11 @@ describe('SellersService', () => {
     sellersService.getProductsById(1).subscribe((product) => {
       expect(product.length).toBe(1);
       expect(product[0].id).toBe(1);
-      expect(product[0].product.id).toBe(1);
-      expect(product[0].product.name).toBe('Ullarvettlingar');
-      expect(product[0].product.price).toBe(1899);
-      expect(product[0].product.quantitySold).toBe(500);
-      expect(product[0].product.quantityInStock).toBe(12);
-      expect(product[0].product.imagePath).toBe('http://i.imgur.com/MZOmRnH.jpg');
+      expect(product[0].name).toBe('Ullarvettlingar');
+      expect(product[0].price).toBe(1899);
+      expect(product[0].quantitySold).toBe(500);
+      expect(product[0].quantityInStock).toBe(12);
+      expect(product[0].imagePath).toBe('http://i.imgur.com/MZOmRnH.jpg');
     })
   }));
 
