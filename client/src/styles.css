@@ -5,8 +5,13 @@
     width: 230px;
     border: 2px solid rgb(225, 225, 232);
     border-radius: 6px;
-    box-shadow: 0px 0px 15px 0px #808080;
+    box-shadow: 0px 0px 4px 0px #808080;
 
+}
+
+#productId:hover{
+  cursor:pointer;
+  box-shadow: 0px 0px 30px 0px #284ef2;
 }
 
 .containerSeperator {
@@ -18,4 +23,14 @@
   width: 190px;
   height: 190px;
   border-radius: 6px;
+}
+
+#sellerPadding{
+  margin: 25px;
+}
+
+#productsPadding{
+  margin-top: 25px;
+  margin-right: auto;
+  margin-left: auto;
 }

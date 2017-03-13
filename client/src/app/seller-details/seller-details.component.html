@@ -1,5 +1,5 @@
-<div *ngIf="sellerDetails" class="border">
-  {{sellerDetails.name}}:
+<div *ngIf="sellerDetails" class="border text-center" id="sellerPadding">
+  {{sellerDetails.name}}
   <br />
   <img [src]="sellerDetails.imagePath" class="imgStyle" />
   <br /> {{sellerDetails.category}}
@@ -9,10 +9,10 @@
 <ngb-tabset>
   <ngb-tab title="All Products">
     <template ngbTabContent>
-      <div class="container body-content">
+      <div class="container body-content" id="productsPadding">
         <div class="row" style="display: block;">
           <div *ngFor="let p of products">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="productId">
               <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
 
               </app-product-card>
