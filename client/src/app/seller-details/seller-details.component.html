@@ -8,7 +8,7 @@
       <div class="container body-content">
         <div class="row" style="display: block;">
           <div *ngFor="let p of products">
-            <div class="col-sm-6 col-md-4" style="float: left">
+            <div class="col-sm-6 col-md-4 containerSeperator" style="float: left">
               <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
 
               </app-product-card>

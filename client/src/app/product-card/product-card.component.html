@@ -1,6 +1,7 @@
-<div *ngIf="sellerProduct">
+<div *ngIf="sellerProduct" class="productBoarder" (click)="onEdit()" placement="top" ngbTooltip="Click To Edit">
   <h3>{{sellerProduct.name}}</h3>
-  <img src="{{sellerProduct.imagePath}}" style="width: 80px ; height: 80px" />
+  <img src="{{sellerProduct.imagePath}}" class="imgStyle" />
   <i>Price: {{sellerProduct.price}}</i>
-  <button class="btn-primary" (click)="onEdit()">Breyta Vöru</button>
+  <br /><br />
+  <!-- <button class="btn-primary" (click)="onEdit()">Breyta Vöru</button> -->
 </div>
