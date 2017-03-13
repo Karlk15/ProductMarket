@@ -28,7 +28,6 @@ export class SellersService {
   }
 
         
-
   addOrEditSeller(newSeller: Seller): Observable<Seller> {
     if(newSeller.id !== undefined) {
       console.log('hellooooo');
