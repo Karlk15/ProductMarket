@@ -3,6 +3,7 @@
   <br />
   <img [src]="sellerDetails.imagePath" class="imgStyle" />
   <br /> {{sellerDetails.category}}
+  <button class="btn btn-primary" (click)="onEditSeller()">Edit</button>
 </div>
 
 <ngb-tabset>
@@ -42,3 +43,5 @@
     </template>
   </ngb-tab>
 </ngb-tabset>
+
+<template ngbModalContainer></template>

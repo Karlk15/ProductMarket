@@ -26,6 +26,7 @@ export class SellerDlgComponent implements OnInit {
                }
 
   ngOnInit() {
+    
   }
 
   onClickOK() {

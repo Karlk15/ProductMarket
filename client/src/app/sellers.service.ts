@@ -30,7 +30,6 @@ export class SellersService {
         
   addOrEditSeller(newSeller: Seller): Observable<Seller> {
     if(newSeller.id !== undefined) {
-      console.log('hellooooo');
       return this.http.put(`http://localhost:5000/api/sellers/${newSeller.id}`, newSeller)
         .map(response => {
           return <Seller>response.json();
