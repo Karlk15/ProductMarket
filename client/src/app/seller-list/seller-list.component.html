@@ -1,7 +1,7 @@
 <div *ngIf="sellers">
   <ul>
     <li *ngFor="let seller of sellers">
-      <img [src]="seller.imagePath" style="width: 80px ; height: 80px" />
+      <img [src]="seller.imagePath" class="imgStyle" />
       <a routerLink="" (click)="onClickSeller(seller)">{{seller.name}}</a> {{seller.category}}
     </li>
   </ul>
