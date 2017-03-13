@@ -1,21 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
 .productBoarder {
-    height: 200px;
+    height: 270px;
+    width: 350px;
     border: 2px solid rgb(225, 225, 232);
     border-radius: 6px;
+    box-shadow: 0px 0px 15px 0px #808080;
 }
 
 .containerSeperator {
-    height: 250px;
+    height: 300px;
+    width: auto;
+    float: left;
 }
 
 .imgStyle {
-  width: 150px;
-  height: 150px;
+  width: 190px;
+  height: 190px;
   border-radius: 6px;
 }
 
-/*.boarder{
 
-}*/
+.sellerBoarder{
+  height: 260px;
+  width: 500px;
+  border: 2px solid rgb(225, 225, 232);
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px 0px #808080;
+}

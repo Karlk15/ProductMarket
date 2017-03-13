@@ -1,6 +1,8 @@
-<p>
-  {{sellerID}}
-</p>
+<div *ngIf="sellerDetails" class="sellerBoarder">
+  <h3>{{sellerDetails.name}}: {{sellerDetails.category}}</h3>
+  <img [src]="sellerDetails.imagePath" class="imgStyle" />
+
+</div>
 
 <ngb-tabset>
   <ngb-tab title="All Products">
@@ -8,7 +10,7 @@
       <div class="container body-content">
         <div class="row" style="display: block;">
           <div *ngFor="let p of products">
-            <div class="col-sm-6 col-md-4 containerSeperator" style="float: left">
+            <div class="col-sm-6 col-md-4 containerSeperator">
               <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
 
               </app-product-card>
