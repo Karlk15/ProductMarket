@@ -17,11 +17,11 @@ export class ProductCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.sellerProduct.name);
   }
-  // virkar ekki af eh ástæðu ??
+
   onEdit() {
-    this.sellerProduct.product.name = "smuuu";
+    this.sellerProduct.name = "smuuu";
     this.sellerProductUpdated.emit(this.sellerProduct);
   }
-  // tengist eg property
 }

@@ -19,12 +19,13 @@ export class SellerDlgComponent implements OnInit {
               private toastrService: ToastrService) { 
                 //toastrConfig.timeOut = 1000;
                 //toastrConfig.maxOpened = 0;
+
+                // initlized so unit tests can run without name = undefined error
                 this.updateSeller = {id: undefined, name: '', category: '', imagePath: ''}
                 
                }
 
   ngOnInit() {
-
   }
 
   onClickOK() {

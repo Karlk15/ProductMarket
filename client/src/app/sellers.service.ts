@@ -27,27 +27,21 @@ export class SellersService {
       });
   }
 
-  addSeller(newSeller: Seller) : Observable<Seller> {
-    newSeller.name = null;
+        
+
+  addSeller(newSeller: Seller): Observable<Seller> {
+
     return this.http.post('http://localhost:5000/api/sellers', newSeller)
       .map(response => {
-        
-        if(response.ok){
-          return <Seller> response.json();
-        }
-        
-      });
-
-       /*return this.http.post('http://localhost:5000/api/sellers', newSeller)
-        ._catch( (response, bla) => {
-          return <Seller> response.json();
-        })*/
+        return <Seller>response.json();
+  });
 
   }
 
   getProductsById(id: number): Observable<Product[]> {
     return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
       .map(response => {
+        console.log(response);
         return <Product[]>response.json();
       });
   }

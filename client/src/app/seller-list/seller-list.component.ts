@@ -40,14 +40,13 @@ export class SellerListComponent implements OnInit {
 
     const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
 
-    //sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
+    sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: 'fg', category: '', imagePath: ''};
     
     sellerDlgInstance.result.then(newSeller => {
       
       // call addSeller func in service to post new seller to server
       this.service.addSeller(newSeller).subscribe( succeeded => {
-        //this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
-        console.log(succeeded);
+        this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
       });
       
     }).catch( err => {

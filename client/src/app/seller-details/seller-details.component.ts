@@ -28,7 +28,6 @@ export class SellerDetailsComponent implements OnInit {
       this.sellerID = +params['id'];
       console.log(this.sellerID);
     })
-
     this.service.getProductsById(this.sellerID).subscribe(allProducts => {
       this.products = allProducts;
     });
