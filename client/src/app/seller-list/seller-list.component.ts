@@ -40,7 +40,7 @@ export class SellerListComponent implements OnInit {
 
     const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
 
-    sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: 'fg', category: '', imagePath: ''};
+    sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
     
     sellerDlgInstance.result.then(newSeller => {
       
