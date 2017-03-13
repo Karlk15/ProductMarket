@@ -4,7 +4,7 @@
     <div class="container body-content">
       <div *ngFor="let seller of sellers">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border">
-          <div routerLink=" " (click)="onClickSeller(seller) " class="text-center ">
+          <div routerLink=" " (click)="onClickSeller(seller.id) " class="text-center ">
             {{seller.name}}
             <img [src]="seller.imagePath " class="imgStyle " />
             <br /> {{seller.category}}

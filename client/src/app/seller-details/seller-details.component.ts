@@ -5,6 +5,9 @@ import { Seller } from '../interfaces/seller';
 import { Observable } from 'rxjs/Rx';
 import { Product } from '../interfaces/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService, ToastrConfig } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller-details',
@@ -21,7 +24,9 @@ export class SellerDetailsComponent implements OnInit {
 
   constructor(private service: SellersService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -39,6 +44,24 @@ export class SellerDetailsComponent implements OnInit {
 
   onProductEdited(p: Product) {
     console.log(p);
+  }
+
+  onEditSeller() {
+    
+    const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
+
+    const oldSellerName = this.sellerDetails.name;
+
+    sellerDlgInstance.componentInstance.updateSeller = this.sellerDetails;
+    
+    sellerDlgInstance.result.then(updateSeller => { 
+      // call addSeller func in service to put updated seller to server
+      this.service.addOrEditSeller(updateSeller).subscribe( updatedSeller => {
+        this.toastrService.success(' was updated to ' + updateSeller.name , oldSellerName);
+      });    
+    }).catch( err => {
+      this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
+    });
   }
 
 }

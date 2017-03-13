@@ -32,8 +32,8 @@ export class SellerListComponent implements OnInit {
 
   }
 
-  onClickSeller(seller: Seller) {
-    this.router.navigate(['/seller', seller.id]);
+  onClickSeller(sellerID: number) {
+    this.router.navigate(['/seller', sellerID]);
   }
 
   onAddSeller() {
@@ -42,13 +42,11 @@ export class SellerListComponent implements OnInit {
 
     sellerDlgInstance.componentInstance.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
     
-    sellerDlgInstance.result.then(newSeller => {
-      
+    sellerDlgInstance.result.then(newSeller => { 
       // call addSeller func in service to post new seller to server
-      this.service.addOrEditSeller(newSeller).subscribe( succeeded => {
-        this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
-      });
-      
+      this.service.addOrEditSeller(newSeller).subscribe( newestSeller => {
+        this.toastrService.success(newestSeller.name + ' added to sellers', 'Success!');
+      });    
     }).catch( err => {
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
