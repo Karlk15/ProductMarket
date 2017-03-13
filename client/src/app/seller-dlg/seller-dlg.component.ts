@@ -29,6 +29,7 @@ export class SellerDlgComponent implements OnInit {
   }
 
   onClickOK() {
+    
     if(!this.isEmptyOrSpaces(this.updateSeller.name)) {
       this.activeModal.close(this.updateSeller);
     } else {
@@ -41,7 +42,7 @@ export class SellerDlgComponent implements OnInit {
     this.activeModal.dismiss();
   }
 
-  private isEmptyOrSpaces(str) {
+  isEmptyOrSpaces(str) {
     return str === null || str.match(/^ *$/) !== null;
   }
 

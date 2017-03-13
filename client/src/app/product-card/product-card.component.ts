@@ -17,7 +17,8 @@ export class ProductCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.sellerProduct.name);
+    // initilize so unit tests does not give name = undefined
+    this.sellerProduct = {id: undefined, name: '', price: undefined, quantitySold: undefined, quantityInStock: undefined, imagePath: ''};
   }
 
   onEdit() {
