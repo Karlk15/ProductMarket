@@ -1,12 +1,14 @@
-<div *ngIf="sellerProduct" (click)="onEdit()" placement="top" ngbTooltip="Click To Edit">
+<div *ngIf="sellerProduct" (click)="onEdit()" placement="top" ngbTooltip="Smelltu til að breyta">
 
   <div class="text-center">
     <h3>{{sellerProduct.name}}</h3>
     <img src="{{sellerProduct.imagePath}}" class="imgStyle" alt="No Image" />
     <br />
-    <i>Stock: {{sellerProduct.quantityInStock}}</i>
+    <i>Seldar vörur: {{sellerProduct.quantitySold}}</i>
     <br />
-    <i>Price: {{sellerProduct.price}}</i>
+    <i>Til á Lager: {{sellerProduct.quantityInStock}}</i>
+    <br />
+    <i>Verð: {{sellerProduct.price}}</i>
   </div>
   <!-- <button class="btn-primary" (click)="onEdit()">Breyta Vöru</button>      þetta er einnig í yrsta div-inu -->
 </div>

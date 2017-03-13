@@ -17,7 +17,6 @@ import { ToastrService, ToastrConfig } from 'ngx-toastr';
 export class SellerDetailsComponent implements OnInit {
 
   private sellerDetails: Seller;
-  private sellersService: SellersService;
   private sellerID: number;
   private products: Product[];
   private topTenProduct: Product[] = new Array(10);
@@ -46,7 +45,7 @@ export class SellerDetailsComponent implements OnInit {
     console.log(p);
   }
 
-  onClickTopTen(): Product[] {
+  TopTen(): Product[] {
 
     function compare(a, b) {
       if (a.quantitySold > b.quantitySold)
