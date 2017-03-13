@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-.productBoarder {
+.border {
     height: 270px;
     width: 230px;
     border: 2px solid rgb(225, 225, 232);
     border-radius: 6px;
     box-shadow: 0px 0px 15px 0px #808080;
+
 }
 
 .containerSeperator {
@@ -17,13 +18,4 @@
   width: 190px;
   height: 190px;
   border-radius: 6px;
-}
-
-
-.sellerBoarder{
-  height: 260px;
-  width: 500px;
-  border: 2px solid rgb(225, 225, 232);
-  border-radius: 6px;
-  box-shadow: 0px 0px 15px 0px #808080;
 }
