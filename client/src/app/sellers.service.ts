@@ -28,11 +28,20 @@ export class SellersService {
   }
 
   addSeller(newSeller: Seller) : Observable<Seller> {
-
+    newSeller.name = null;
     return this.http.post('http://localhost:5000/api/sellers', newSeller)
       .map(response => {
-        return <Seller> response.json();
+        
+        if(response.ok){
+          return <Seller> response.json();
+        }
+        
       });
+
+       /*return this.http.post('http://localhost:5000/api/sellers', newSeller)
+        ._catch( (response, bla) => {
+          return <Seller> response.json();
+        })*/
 
   }
 

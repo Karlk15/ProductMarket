@@ -46,7 +46,8 @@ export class SellerListComponent implements OnInit {
       
       // call addSeller func in service to post new seller to server
       this.service.addSeller(newSeller).subscribe( succeeded => {
-        this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
+        //this.toastrService.success(succeeded.name + ' added to sellers', 'Success!');
+        console.log(succeeded);
       });
       
     }).catch( err => {
