@@ -28,20 +28,25 @@ export class SellersService {
   }
 
         
-
-  addSeller(newSeller: Seller): Observable<Seller> {
-
-    return this.http.post('http://localhost:5000/api/sellers', newSeller)
-      .map(response => {
-        return <Seller>response.json();
-    });
-
+  addOrEditSeller(newSeller: Seller): Observable<Seller> {
+    if(newSeller.id !== undefined) {
+      console.log('hellooooo');
+      return this.http.put(`http://localhost:5000/api/sellers/${newSeller.id}`, newSeller)
+        .map(response => {
+          return <Seller>response.json();
+        });
+    }
+    else {
+      return this.http.post('http://localhost:5000/api/sellers', newSeller)
+        .map(response => {
+          return <Seller>response.json();
+        });
+    }
   }
 
   getProductsById(id: number): Observable<Product[]> {
     return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
       .map(response => {
-        console.log(response);
         return <Product[]>response.json();
       });
   }
