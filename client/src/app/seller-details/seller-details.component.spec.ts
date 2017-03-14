@@ -11,12 +11,14 @@ import { Router, ActivatedRoute, Data, Params } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../interfaces/product';
 import { } from 'jasmine';
 
 
-xdescribe('SellerDetailsComponent', () => {
+describe('SellerDetailsComponent', () => {
   let component: SellerDetailsComponent;
   let fixture: ComponentFixture<SellerDetailsComponent>;
 
@@ -35,7 +37,7 @@ xdescribe('SellerDetailsComponent', () => {
   let mockModal = {
     open: jasmine.createSpy('modal.open').and.returnValue({ result: { then: jasmine.createSpy('modal.result.then') } }),
     close: jasmine.createSpy('modal.close'),
-    dismiss: jasmine.createSpy('modal.dismiss')
+    dismiss: jasmine.createSpy('modal.dismiss'),
   };
 
   let mockParams = {
@@ -50,8 +52,9 @@ xdescribe('SellerDetailsComponent', () => {
         { provide: Router, useValue: mockRouter},
         { provide: ActivatedRoute, useValue:  mockParams },
         { provide: NgbModal, useValue: mockModal},
-        {provide: ToastrService, useValue: mockToastr}
+        { provide: ToastrService, useValue: mockToastr }
       ],
+      imports: [NgbModule.forRoot(), ]
     })
     .compileComponents()
   }));
@@ -62,7 +65,7 @@ xdescribe('SellerDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 
