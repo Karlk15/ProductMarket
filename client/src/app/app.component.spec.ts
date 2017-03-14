@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SellerListComponent} from './seller-list/seller-list.component';
 import { SellerDetailsComponent } from './seller-details/seller-details.component';
@@ -8,6 +8,12 @@ import { Router, RouterModule} from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  let mockRouter = {
+	  navigate: jasmine.createSpy("navigate")	
+  };
 
   beforeEach(() => {
 
@@ -26,7 +32,10 @@ describe('AppComponent', () => {
             component: SellerDetailsComponent
           }])
       ],
-      providers: [{ provide: Router }],
+      providers: [
+        { provide: Router },
+        {provide: Router, useValue: mockRouter}
+      ],
       declarations: [
         AppComponent,
         SellerListComponent,
@@ -37,6 +46,12 @@ describe('AppComponent', () => {
 
     TestBed.compileComponents();
 
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
 
@@ -58,5 +73,17 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to the Market Place');
   }));
+
+  describe('when onClicBack is called', () => {
+
+    it('should route to sellers', () => {
+      // Act
+      component.onClickBack();
+
+      // Assert
+      expect(mockRouter.navigate).toHaveBeenCalledWith(['/sellers']);
+    });
+
+  });
 
 });

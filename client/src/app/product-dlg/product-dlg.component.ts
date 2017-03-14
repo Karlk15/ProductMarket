@@ -26,10 +26,10 @@ export class ProductDlgComponent implements OnInit {
 
   onClickOK() {
     
-    if(!this.isEmptyOrSpaces(this.updateProduct.name)) {
+    if(!this.isEmptyOrSpaces(this.updateProduct.name) && this.updateProduct.price > 0) {
       this.activeModal.close(this.updateProduct);
     } else {
-      this.toastrService.warning('Name is required', 'Invalid input');
+      this.toastrService.warning('Name or price are invalid', 'Invalid input');
     }
     
   }

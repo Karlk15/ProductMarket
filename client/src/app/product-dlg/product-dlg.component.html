@@ -6,10 +6,8 @@
 </div>
 
 <div class="modal-body">
-  <input [(ngModel)]="updateProduct.name" placeholder="Enter new seller name" autofocus/>
-  <input [(ngModel)]="updateProduct.price" placeholder="Enter new category"/>
-  <!--<input [(ngModel)]="updateProduct.quantityInStock" placeholder="Enter new quantity in stock"/>-->
-  <!--<input [(ngModel)]="updateProduct.quantitySold" placeholder="Enter new quantity sold"/>-->
+  <input [(ngModel)]="updateProduct.name" placeholder="Enter new seller name" maxlength="18" autofocus/>
+  <input [(ngModel)]="updateProduct.price" placeholder="Enter new price" />
   <input [(ngModel)]="updateProduct.imagePath" placeholder="Enter new image path"/>
 </div>
 

@@ -70,11 +70,11 @@ export class SellerDetailsComponent implements OnInit {
     productDlgInstance.result.then(updateProduct => { 
       // call addOrEditProduct func in service to put updated product to server
       this.service.addOrEditProduct(updateProduct, this.sellerID).subscribe( updatedProduct => {
-        console.log(updateProduct);
         location.reload();
         this.toastrService.success(oldProductName + ' was updated' , 'Product updated');
       });    
     }).catch( err => {
+      location.reload();
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
 
@@ -90,6 +90,7 @@ export class SellerDetailsComponent implements OnInit {
         this.toastrService.success(updatedProduct.name + ' was added to product list' , 'Product added');
       });    
     }).catch( err => {
+      location.reload();
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
 

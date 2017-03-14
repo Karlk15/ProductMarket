@@ -47,6 +47,7 @@ export class SellerListComponent implements OnInit {
         this.toastrService.success(newestSeller.name + ' added to sellers', 'Success!');
       });    
     }).catch( err => {
+      location.reload();
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
 
