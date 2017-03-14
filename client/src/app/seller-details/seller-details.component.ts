@@ -20,7 +20,7 @@ export class SellerDetailsComponent implements OnInit {
   private sellerDetails: Seller;
   private sellerID: number;
   private products: Product[];
-  private showAlert: Boolean = false;
+  private showAlert: Boolean;
   private topTenProduct: Product[] = new Array(10);
 
   constructor(private service: SellersService,
