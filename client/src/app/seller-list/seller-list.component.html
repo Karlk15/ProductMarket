@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="onAddSeller()">New Seller</button>
+<button class="btn btn-primary" (click)="onAddSeller()">Bæta við Seljanda</button>
 <div>
   <div *ngIf="sellers">
     <div class="container body-content">
@@ -6,8 +6,9 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border">
           <div routerLink=" " (click)="onClickSeller(seller.id) " class="text-center ">
             {{seller.name}}
-            <img [src]="seller.imagePath " class="imgStyle" alt="image not found" />
-            <br /> {{seller.category}}
+            <br />
+            <img [src]="seller.imagePath " class="imgStyle " alt="image not found" />
+            <br />Category: {{seller.category}}
           </div>
         </div>
       </div>

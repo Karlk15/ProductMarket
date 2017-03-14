@@ -18,11 +18,10 @@ import { ToastrService, ToastrConfig } from 'ngx-toastr';
 export class SellerDetailsComponent implements OnInit {
 
   private sellerDetails: Seller;
-  private sellersService: SellersService;
   private sellerID: number;
   private products: Product[];
   private showAlert: Boolean = false;
-
+  private topTenProduct: Product[] = new Array(10);
 
   constructor(private service: SellersService,
     private router: Router,
@@ -61,6 +60,7 @@ export class SellerDetailsComponent implements OnInit {
   }
 
   onEditProduct(updatedProduct: Product) {
+    
     const productDlgInstance = this.modalService.open(ProductDlgComponent);
 
     const oldProductName = updatedProduct.name;
@@ -70,8 +70,9 @@ export class SellerDetailsComponent implements OnInit {
     productDlgInstance.result.then(updateProduct => { 
       // call addOrEditProduct func in service to put updated product to server
       this.service.addOrEditProduct(updateProduct, this.sellerID).subscribe( updatedProduct => {
+        console.log(updateProduct);
         location.reload();
-        this.toastrService.success(' was updated to ' + updatedProduct.name , oldProductName);
+        this.toastrService.success(oldProductName + ' was updated' , 'Product updated');
       });    
     }).catch( err => {
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
@@ -94,24 +95,42 @@ export class SellerDetailsComponent implements OnInit {
 
   }
 
+  TopTen(): Product[] {
+
+    function compare(a, b) {
+      if (a.quantitySold > b.quantitySold)
+        return -1;
+      if (a.quantitySold < b.quantitySold)
+        return 1;
+      return 0;
+    }
+
+    let sortedProducts = this.products.slice();
+    sortedProducts = sortedProducts.sort(compare);
+
+    for (let i = 0; i < 10; i++) {
+      this.topTenProduct[i] = sortedProducts[i];
+    }
+    return this.topTenProduct;
+  }
+
   onEditSeller() {
-    
+
     const sellerDlgInstance = this.modalService.open(SellerDlgComponent);
 
     const oldSellerName = this.sellerDetails.name;
 
     sellerDlgInstance.componentInstance.updateSeller = this.sellerDetails;
-    
-    sellerDlgInstance.result.then(updateSeller => { 
+
+    sellerDlgInstance.result.then(updateSeller => {
       // call addSeller func in service to put updated seller to server
       this.service.addOrEditSeller(updateSeller).subscribe( updatedSeller => {
         location.reload();
-        this.toastrService.success(' was updated to ' + updateSeller.name , oldSellerName);
+        this.toastrService.success(oldSellerName + ' was updated' , 'Seller updated');
       });    
     }).catch( err => {
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
 
   }
-
 }
