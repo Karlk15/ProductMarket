@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, Type, NgModule, Input, Component } from '@angular/core';
 
 import { SellerListComponent } from './seller-list.component';
 import { MockService } from '../mock.service';
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
+import { FormsModule } from '@angular/forms';
 import { } from 'jasmine';
 
 describe('SellerListComponent', () => {
+
   let component: SellerListComponent;
   let fixture: ComponentFixture<SellerListComponent>;
 
@@ -24,16 +26,33 @@ describe('SellerListComponent', () => {
     error: jasmine.createSpy('tostr.error')
   }
 
-
   let mockRouter = {
-	  navigate: jasmine.createSpy("navigate")	
+	  navigate: jasmine.createSpy('navigate')	
   };
 
   let mockModal = {
-    open: jasmine.createSpy('modal.open').and.returnValue({ result: { then: jasmine.createSpy('modal.result.then') } }),
-    close: jasmine.createSpy('modal.close'),
-    dismiss: jasmine.createSpy('modal.dismiss')
+    result: {
+        then: function(confirmCallback, cancelCallback) {
+            //Store the callbacks for later when the user clicks on the OK or Cancel button of the dialog
+            this.confirmCallBack = confirmCallback;
+            this.cancelCallback = cancelCallback;
+        },
+        catch: function (cancelCallback) {
+            this.cancelCallback = cancelCallback;
+            return this;
+        }
+    },
+    close: function( item ) {
+        //The user clicked OK on the modal dialog, call the stored confirm callback with the selected item
+        this.result.confirmCallBack( item );
+    },
+    dismiss: function( type ) {
+        //The user clicked cancel on the modal dialog, call the stored cancel callback
+        this.result.cancelCallback( type );
+    }
   };
+
+  const mockSellerDlgInstance = this.mockModal.open(SellerDlgComponent);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -72,17 +91,10 @@ describe('SellerListComponent', () => {
 
 
   describe('when onAddSellerClicked is called', () => {
-
-    xit('should ', () => {
-      // Assert
-      
-
-
-      // Act
-      component.onAddSeller();
-
-      // Assert
-      expect(mockModal.open).toHaveBeenCalled();
+    xit('should open modal', () => {
+      spyOn(component, 'onAddSellerClicked').and.returnValue(mockModal);
+        this.open()
+          
     });
 
   });
