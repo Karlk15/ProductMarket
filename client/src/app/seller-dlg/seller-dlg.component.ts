@@ -21,7 +21,7 @@ export class SellerDlgComponent implements OnInit {
                 //toastrConfig.maxOpened = 0;
 
                 // initlized so unit tests can run without name = undefined error
-                this.updateSeller = {id: undefined, name: '', category: '', imagePath: ''}
+                this.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
                 
                }
 

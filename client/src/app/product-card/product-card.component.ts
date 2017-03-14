@@ -11,20 +11,20 @@ export class ProductCardComponent implements OnInit {
   @Input()
   sellerProduct: Product;
 
-  @Output()
-  sellerProductUpdated = new EventEmitter();
+  //@Output()
+  //sellerProductUpdated = new EventEmitter();
 
-  constructor() { 
+  constructor() {
     // initilize so unit tests does not give name = undefined
-    this.sellerProduct = {id: undefined, name: '', price: undefined, quantitySold: undefined, quantityInStock: undefined, imagePath: ''};
+    this.sellerProduct = { id: undefined, name: '', price: undefined, quantitySold: undefined, quantityInStock: undefined, imagePath: '' };
   }
 
   ngOnInit() {
-    
+
   }
 
-  onEdit() {
+  /*onEdit() {
     this.sellerProduct.name = "smuuu";
     this.sellerProductUpdated.emit(this.sellerProduct);
-  }
+  }*/
 }

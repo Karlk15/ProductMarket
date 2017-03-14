@@ -11,7 +11,14 @@
 
 #productId:hover{
   cursor:pointer;
-  box-shadow: 0px 0px 30px 0px #284ef2;
+  box-shadow: 0px 0px 30px 0px #6d6e70;
+}
+
+#go-Home-Pointer{
+  color: rgb(255, 255, 255);
+  font-family: verdana, Arial, sans-serif;
+  font-size: 300%;
+  cursor:pointer;
 }
 
 .containerSeperator {
@@ -33,4 +40,26 @@
   margin-top: 25px;
   margin-right: auto;
   margin-left: auto;
+}
+
+#grad{
+  padding-top: 35px;
+  padding-bottom: 35px;
+  background: rgb(54, 53, 52); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* Standard syntax */
+}
+
+
+#home{
+  float: left;
+}
+
+.btn-color{
+  cursor:pointer;
+  color: rgb(255, 255, 255);
+  font-family: verdana, Arial, sans-serif;
+  background: rgb(42, 41, 41);
 }
