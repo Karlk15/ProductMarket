@@ -58,6 +58,7 @@ export class SellerDetailsComponent implements OnInit {
         this.router.navigate(['/sellers']); 
       }
     );
+
   }
 
   onEditProduct(updatedProduct: Product) {
@@ -88,7 +89,7 @@ export class SellerDetailsComponent implements OnInit {
       // call addOrEditProduct func in service to put updated product to server
       this.service.addOrEditProduct(updateProduct, this.sellerID).subscribe( updatedProduct => {
         location.reload();
-        this.toastrService.success(updatedProduct.name + ' was added to product list' , 'Product added');
+        this.toastrService.success('New product was added to product list' , 'Product added');
       });    
     }).catch( err => {
       location.reload();

@@ -20,8 +20,9 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
+
   // TODO implemented actual edit on array
-  /*addOrEditSeller(newSeller: Seller) : Observable<Seller> {
+  addOrEditSeller(newSeller: Seller) : Observable<Seller> {
     if(newSeller.id !== undefined) {
       //this.sellerList.find(newSeller.id);
       return Observable.of(newSeller);
@@ -34,10 +35,8 @@ export class MockService {
   getSellerById(id: number): Observable<Seller> {
     let seller: Seller;
 
-    this.sellerList.find();
-
     return Observable.of(seller)
-  }*/
+  }
 
 
 }

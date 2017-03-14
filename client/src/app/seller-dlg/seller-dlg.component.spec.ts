@@ -12,8 +12,13 @@ describe('SellerDlgComponent', () => {
   let fixture: ComponentFixture<SellerDlgComponent>;
 
   let mockModal = {
-        close: jasmine.createSpy('modal.close'),
-        dismiss: jasmine.createSpy('modal.dismiss')
+    open: jasmine.createSpy('modal.open').and.returnValue({ 
+        result: { 
+          then: jasmine.createSpy('modal.result.then') 
+      } 
+    }),
+    close: jasmine.createSpy('modal.close'),
+    dismiss: jasmine.createSpy('modal.dismiss')
   };
 
     let mockToastr = {
