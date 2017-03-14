@@ -1,4 +1,4 @@
-<button class="btn-color" (click)="onAddSeller()" placement="right" ngbTooltip="Add Seller">
+<button class="btn-color" (click)="onAddSeller()"  >
   <img src="http://www.sveikatasu4life.com/uploads/2/0/5/9/20595306/2319779_orig.png" class="Logo"/>
 </button>
 
@@ -6,7 +6,7 @@
   <div *ngIf="sellers">
     <div class="container body-content" id="background-color">
       <div *ngFor="let seller of sellers">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator SellerBoarder" id="focus" placement="top" ngbTooltip="click to view {{seller.category}}">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator SellerBoarder" id="focus" >
           <div routerLink=" " (click)="onClickSeller(seller.id) " class="text-center ">
             {{seller.name}}
             <br />
