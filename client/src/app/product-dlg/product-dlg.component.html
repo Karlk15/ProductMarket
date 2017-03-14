@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title">Update Product</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onClickCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <input [(ngModel)]="updateProduct.name" placeholder="Enter new seller name" autofocus/>
+  <input [(ngModel)]="updateProduct.price" placeholder="Enter new category"/>
+  <!--<input [(ngModel)]="updateProduct.quantityInStock" placeholder="Enter new quantity in stock"/>-->
+  <!--<input [(ngModel)]="updateProduct.quantitySold" placeholder="Enter new quantity sold"/>-->
+  <input [(ngModel)]="updateProduct.imagePath" placeholder="Enter new image path"/>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="onClickOK()">Add/Edit</button>
+  <button type="button" class="btn btn-warning" (click)="onClickCancel()">Cancel</button>
+</div>

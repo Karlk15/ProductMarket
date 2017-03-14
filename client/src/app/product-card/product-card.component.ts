@@ -11,8 +11,8 @@ export class ProductCardComponent implements OnInit {
   @Input()
   sellerProduct: Product;
 
-  @Output()
-  sellerProductUpdated = new EventEmitter();
+  //@Output()
+  //sellerProductUpdated = new EventEmitter();
 
   constructor() {
     // initilize so unit tests does not give name = undefined
@@ -23,8 +23,8 @@ export class ProductCardComponent implements OnInit {
 
   }
 
-  onEdit() {
+  /*onEdit() {
     this.sellerProduct.name = "smuuu";
     this.sellerProductUpdated.emit(this.sellerProduct);
-  }
+  }*/
 }

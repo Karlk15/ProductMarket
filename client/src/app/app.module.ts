@@ -12,6 +12,7 @@ import { SellersService } from './sellers.service';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SellerListComponent,
     SellerDetailsComponent,
     SellerDlgComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductDlgComponent
   ],
   imports: [
     BrowserModule,
@@ -38,13 +40,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       }, {
         path: 'seller/:id',
         component: SellerDetailsComponent
-      }, {
-        path: 'newSeller',
-        component: SellerDlgComponent
       }])
   ],
   providers: [SellersService],
   bootstrap: [AppComponent],
-  entryComponents: [SellerDlgComponent]
+  entryComponents: [SellerDlgComponent, ProductDlgComponent]
 })
 export class AppModule { }

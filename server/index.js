@@ -185,6 +185,7 @@ app.post("/api/sellers/:id/products", (req, res) => {
 });
 
 app.put("/api/sellers/:id/products/:prodId", (req, res) => {
+	console.log("Attempting to update product");
 	// Validate seller:
 	var seller = findSellerById(parseInt(req.params.id));
 	if (!seller) {
