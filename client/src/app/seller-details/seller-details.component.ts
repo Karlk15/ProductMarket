@@ -20,7 +20,7 @@ export class SellerDetailsComponent implements OnInit {
   private sellerDetails: Seller;
   private sellerID: number;
   public products: Product[];
-  private showAlert: Boolean;
+  public showAlert: Boolean;
   private topTenProduct: Product[];
 
   constructor(private service: SellersService,
@@ -45,9 +45,6 @@ export class SellerDetailsComponent implements OnInit {
           this.showAlert = false;
         }
 
-      }, 
-      error => {                      // not able to get all products (because seller does not exist)
-        this.toastrService.error('Seller number ' + this.sellerID + ' does not exist', 'Seller not found'); 
       }
     );
 
@@ -99,7 +96,6 @@ export class SellerDetailsComponent implements OnInit {
   }
 
   TopTen(): Product[] {
-    console.log("hello");
     function compare(a, b) {
       if (a.quantitySold > b.quantitySold)
         return -1;

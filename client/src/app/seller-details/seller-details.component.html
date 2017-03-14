@@ -5,13 +5,11 @@
   <br />Category: {{sellerDetails.category}}
 
   <div>
-    <button class="btn-color" (click)="onEditSeller()" id="focus">
+    <button class="btn-color" (click)="onEditSeller()" id="focus" placement="bottom" ngbTooltip="Edit {{sellerDetails.name}}">
       <img src="http://iconmaker.net/gd/makefg.php?i=icons/Application/Document-Edit.png&r=255&g=255&b=255" class="Logo"/>
-      Edit Profile
     </button>
-    <button class="btn-color" (click)="onAddProduct()" id="focus">
+    <button class="btn-color" (click)="onAddProduct()" id="focus" placement="bottom" ngbTooltip="Add products to {{sellerDetails.name}}">
       <img src="http://www.sveikatasu4life.com/uploads/2/0/5/9/20595306/2319779_orig.png" class="Logo" />
-      Add Product
     </button>
   </div>
 </div>

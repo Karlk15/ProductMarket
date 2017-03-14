@@ -66,11 +66,13 @@ describe('SellerDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+
+  it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.showAlert).toBeFalsy();
   });
 
-  describe('when ngOnInit is called', () => {
+  xdescribe('when ngOnInit is called', () => {
 
     xit('sellerID should be equal to params idOfSeller', () => {
       // Act
@@ -84,7 +86,7 @@ describe('SellerDetailsComponent', () => {
 
   });
 
-   describe('when TopTen is called', () => {
+  xdescribe('when TopTen is called', () => {
       
 
     xit('sellerID should be equal to params idOfSeller', () => {
