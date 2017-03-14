@@ -52,8 +52,6 @@ describe('SellerListComponent', () => {
     }
   };
 
-  const mockSellerDlgInstance = this.mockModal.open(SellerDlgComponent);
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SellerListComponent ],
@@ -93,10 +91,8 @@ describe('SellerListComponent', () => {
   describe('when onAddSellerClicked is called', () => {
     xit('should open modal', () => {
       spyOn(component, 'onAddSellerClicked').and.returnValue(mockModal);
-        this.open()
 
     });
-
   });
 
 });

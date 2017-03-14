@@ -120,4 +120,123 @@ describe('SellersService', () => {
     })
   }));
 
+  it('addOrEditSeller() should add seller', async (() => {
+    let sellersService: SellersService = getTestBed().get(SellersService);
+
+    mockBackend.connections.subscribe(
+      (connection: MockConnection) => {
+        expect(connection.request.url).toMatch('http://localhost:5000/api/sellers');
+
+        connection.mockRespond(
+          new Response(
+            new ResponseOptions({
+              status: 201
+            })
+          ));
+      });
+
+    let newSeller: Seller = {
+      id: undefined,
+      name: 'Danni',
+      category: 'Spaceships',
+      imagePath: 'http://imgur.com/r/panda/xhE1cN4'
+    }
+      
+    sellersService.addOrEditSeller(newSeller).subscribe((statusCode) => {
+      expect(statusCode).toBeDefined();
+      expect(statusCode).toEqual(201);
+    });
+  }));
+
+  it('addOrEditSeller() should update seller', async (() => {
+    let sellersService: SellersService = getTestBed().get(SellersService);
+
+    mockBackend.connections.subscribe(
+      (connection: MockConnection) => {
+        expect(connection.request.url).toMatch('http://localhost:5000/api/sellers/5');
+
+        connection.mockRespond(
+          new Response(
+            new ResponseOptions({
+              status: 200
+            })
+          ));
+      });
+      
+    let existingSeller: Seller = {
+      id: 5,
+      name: 'Danni',
+      category: 'Spaceships',
+      imagePath: 'http://imgur.com/r/panda/xhE1cN4'
+    }
+
+    sellersService.addOrEditSeller(existingSeller).subscribe((statusCode) => {
+      expect(statusCode).toBeDefined();
+      expect(statusCode).toEqual(200);
+    });
+  }));
+
+  it('addOrEditProduct() should add product', async (() => {
+    let sellersService: SellersService = getTestBed().get(SellersService);
+
+    mockBackend.connections.subscribe(
+      (connection: MockConnection) => {
+        expect(connection.request.url).toMatch('http://localhost:5000/api/sellers/3/products');
+
+        connection.mockRespond(
+          new Response(
+            new ResponseOptions({
+              status: 201
+            })
+          ));
+      });
+    
+    let sellerID = 3;
+    let newProduct: Product = {
+      id: undefined,
+      name: 'Trefill',
+      price: 899,
+      quantitySold: 420,
+      quantityInStock: 42,
+      imagePath: 'http://i.imgur.com/50ivFlC.jpg'
+    }
+
+    sellersService.addOrEditProduct(newProduct, sellerID).subscribe((statusCode) => {
+      expect(statusCode).toBeDefined();
+      expect(statusCode).toEqual(201);
+    });
+  }));
+
+  it('addOrEditProduct() should update product', async (() => {
+    let sellersService: SellersService = getTestBed().get(SellersService);
+
+    mockBackend.connections.subscribe(
+      (connection: MockConnection) => {
+        expect(connection.request.url).toMatch('http://localhost:5000/api/sellers/2/products/7');
+
+        connection.mockRespond(
+          new Response(
+            new ResponseOptions({
+              status: 200
+            })
+          ));
+      });
+    
+    let sellerID = 2;
+    let existingProduct: Product = {
+      id: 7,
+      name: 'Ullarvettlingar',
+      price: 1899,
+      quantitySold: 500,
+      quantityInStock: 12,
+      imagePath: 'http://i.imgur.com/MZOmRnH.jpg'
+    }
+
+    sellersService.addOrEditProduct(existingProduct, sellerID).subscribe((statusCode) => {
+      expect(statusCode).toBeDefined();
+      expect(statusCode).toEqual(200);
+    });
+  }));
+
+
 });

@@ -44,7 +44,7 @@ export class SellerListComponent implements OnInit {
       // call addSeller func in service to post new seller to server
       this.service.addOrEditSeller(newSeller).subscribe( newestSeller => {
         location.reload();
-        this.toastrService.success(newestSeller.name + ' added to sellers', 'Success!');
+        this.toastrService.success('New seller added', 'Success!');
       });    
     }).catch( err => {
       location.reload();
