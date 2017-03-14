@@ -43,6 +43,23 @@ export class SellersService {
     }
   }
 
+  addOrEditProduct(newProduct: Product,sellerID: number): Observable<Product> {
+    if(newProduct.id !== undefined) {
+      return this.http.put(`http://localhost:5000/api/sellers/${sellerID}/products/${newProduct.id}`, newProduct)
+        .map(response => {
+          const tempProduct = response.json()
+          return <Product> tempProduct.product;
+        });
+    }
+    else {
+      return this.http.post(`http://localhost:5000/api/sellers/${sellerID}/products`, newProduct)
+        .map(response => {
+          const tempProduct = response.json()
+          return <Product> tempProduct.product;
+        });
+    }
+  }
+
   getProductsById(id: number): Observable<Product[]> {
     return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
       .map(response => {

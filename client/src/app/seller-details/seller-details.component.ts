@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { Product } from '../interfaces/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
+import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService, ToastrConfig } from 'ngx-toastr';
 
@@ -20,6 +21,7 @@ export class SellerDetailsComponent implements OnInit {
   private sellersService: SellersService;
   private sellerID: number;
   private products: Product[];
+  private showAlert: Boolean = false;
 
 
   constructor(private service: SellersService,
@@ -33,17 +35,63 @@ export class SellerDetailsComponent implements OnInit {
       this.sellerID = +params['id'];
     });
 
-    this.service.getProductsById(this.sellerID).subscribe(allProducts => {
-      this.products = allProducts;
-    });
+    this.service.getProductsById(this.sellerID).subscribe(
+      allProducts => {                // able to get all products
+        this.products = allProducts; 
 
-    this.service.getSellerById(this.sellerID).subscribe(details => {
-      this.sellerDetails = details;
-    });
+        if(this.products.length === 0) {
+          this.showAlert = true;
+        } else {
+          this.showAlert = false;
+        }
+
+      }, 
+      error => {                      // not able to get all products (because seller does not exist)
+        this.toastrService.error('Seller number ' + this.sellerID + ' does not exist', 'Seller not found'); 
+      }
+    );
+
+    this.service.getSellerById(this.sellerID).subscribe(
+      details => { this.sellerDetails = details; }, // particular seller does exist
+      error => {                                    // particular seller does no exist
+        this.toastrService.error('Seller number ' + this.sellerID + ' does not exist', 'Seller not found');
+        this.router.navigate(['/sellers']); 
+      }
+    );
   }
 
-  onProductEdited(p: Product) {
-    console.log(p);
+  onEditProduct(updatedProduct: Product) {
+    const productDlgInstance = this.modalService.open(ProductDlgComponent);
+
+    const oldProductName = updatedProduct.name;
+
+    productDlgInstance.componentInstance.updateProduct = updatedProduct;
+    
+    productDlgInstance.result.then(updateProduct => { 
+      // call addOrEditProduct func in service to put updated product to server
+      this.service.addOrEditProduct(updateProduct, this.sellerID).subscribe( updatedProduct => {
+        location.reload();
+        this.toastrService.success(' was updated to ' + updatedProduct.name , oldProductName);
+      });    
+    }).catch( err => {
+      this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
+    });
+
+  }
+
+  onAddProduct() {
+    const productDlgInstance = this.modalService.open(ProductDlgComponent);
+    
+    productDlgInstance.result.then(updateProduct => { 
+      // call addOrEditProduct func in service to put updated product to server
+      this.service.addOrEditProduct(updateProduct, this.sellerID).subscribe( updatedProduct => {
+        location.reload();
+        this.toastrService.success(updatedProduct.name + ' was added to product list' , 'Product added');
+      });    
+    }).catch( err => {
+      this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
+    });
+
   }
 
   onEditSeller() {
@@ -57,11 +105,13 @@ export class SellerDetailsComponent implements OnInit {
     sellerDlgInstance.result.then(updateSeller => { 
       // call addSeller func in service to put updated seller to server
       this.service.addOrEditSeller(updateSeller).subscribe( updatedSeller => {
+        location.reload();
         this.toastrService.success(' was updated to ' + updateSeller.name , oldSellerName);
       });    
     }).catch( err => {
       this.toastrService.error('Your changes were not submitted', 'Operation Canceled');
     });
+
   }
 
 }

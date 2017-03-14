@@ -1,17 +1,18 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement, Input } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SellerDlgComponent } from './seller-dlg.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 
-describe('SellerDlgComponent', () => {
-  let component: SellerDlgComponent;
-  let fixture: ComponentFixture<SellerDlgComponent>;
+import { ProductDlgComponent } from './product-dlg.component';
 
-  let mockModal = {
+describe('ProductDlgComponent', () => {
+  let component: ProductDlgComponent;
+  let fixture: ComponentFixture<ProductDlgComponent>;
+
+   let mockModal = {
         close: jasmine.createSpy('modal.close'),
         dismiss: jasmine.createSpy('modal.dismiss')
   };
@@ -22,10 +23,10 @@ describe('SellerDlgComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SellerDlgComponent ],
+      declarations: [ ProductDlgComponent ],
       providers: [
         { provide: NgbActiveModal, useValue: mockModal },
-        {provide: ToastrService, useValue: mockToastr}
+        { provide: ToastrService, useValue: mockToastr }
       ],
       imports: [ FormsModule ]
     })
@@ -33,7 +34,7 @@ describe('SellerDlgComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SellerDlgComponent);
+    fixture = TestBed.createComponent(ProductDlgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -78,29 +79,28 @@ describe('SellerDlgComponent', () => {
 
     it('should call activeModal.close', () => {
       // Arrange
-      component.updateSeller = {id: 1, name: 'kalli', category: 'things', imagePath: 'stuff'};
+      const tempProduct = component.updateProduct = {id: 1, name: 'siggi', price: 252, quantitySold: 54, quantityInStock: 543, imagePath: 'dsgsf'};
 
       // Act
       component.onClickOK();
 
       // Assert
-      expect(mockModal.close).toHaveBeenCalledWith({id: 1, name: 'kalli', category: 'things', imagePath: 'stuff'});
+      expect(mockModal.close).toHaveBeenCalledWith(tempProduct);
     });
 
 
     it('should call toastrSerive.warning', () => {
       // Arrange
-      component.updateSeller = {id: 1, name: '', category: 'things', imagePath: 'stuff'};
+      component.updateProduct = {id: 1, name: '', price: 252, quantitySold: 54, quantityInStock: 543, imagePath: 'dsgsf'};
 
       // Act
       component.onClickOK();
+
 
       // Assert
       expect(mockToastr.warning).toHaveBeenCalled();
     });
 
   });
-  
-
 
 });

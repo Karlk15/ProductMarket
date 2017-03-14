@@ -1,38 +1,33 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Seller } from '../interfaces/seller';
+import { Product } from '../interfaces/product';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService, ToastrConfig } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-seller-dlg',
-  templateUrl: './seller-dlg.component.html',
-  styleUrls: ['./seller-dlg.component.css']
+  selector: 'app-product-dlg',
+  templateUrl: './product-dlg.component.html',
+  styleUrls: ['./product-dlg.component.css']
 })
-export class SellerDlgComponent implements OnInit {
-  
-  @Input()
-  updateSeller: Seller;
+export class ProductDlgComponent implements OnInit {
 
+  @Input()
+  updateProduct: Product;
 
   constructor(public activeModal: NgbActiveModal,
-              private toastrService: ToastrService) { 
-                //toastrConfig.timeOut = 1000;
-                //toastrConfig.maxOpened = 0;
+              private toastrService: ToastrService) {
 
                 // initlized so unit tests can run without name = undefined error
-                this.updateSeller = {id: undefined, name: '', category: '', imagePath: ''};
-                
+                this.updateProduct = {id: undefined, name: '', price: undefined, quantitySold: undefined, quantityInStock: undefined, imagePath: ''};
                }
 
   ngOnInit() {
-    
   }
 
   onClickOK() {
     
-    if(!this.isEmptyOrSpaces(this.updateSeller.name)) {
-      this.activeModal.close(this.updateSeller);
+    if(!this.isEmptyOrSpaces(this.updateProduct.name)) {
+      this.activeModal.close(this.updateProduct);
     } else {
       this.toastrService.warning('Name is required', 'Invalid input');
     }
