@@ -58,6 +58,7 @@ export class SellerDetailsComponent implements OnInit {
         this.router.navigate(['/sellers']); 
       }
     );
+
   }
 
   onEditProduct(updatedProduct: Product) {

@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 //import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SellerDetailsComponent } from './seller-details.component';
 import { MockService } from '../mock.service';
@@ -18,7 +18,7 @@ import { Product } from '../interfaces/product';
 import { } from 'jasmine';
 
 
-xdescribe('SellerDetailsComponent', () => {
+describe('SellerDetailsComponent', () => {
   let component: SellerDetailsComponent;
   let fixture: ComponentFixture<SellerDetailsComponent>;
 
@@ -54,7 +54,8 @@ xdescribe('SellerDetailsComponent', () => {
         { provide: NgbModal, useValue: mockModal},
         { provide: ToastrService, useValue: mockToastr }
       ],
-      imports: [NgbModule.forRoot(), ]
+      imports: [NgbModule.forRoot(), ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents()
   }));
