@@ -22,13 +22,23 @@ export class MockService {
 
 
   // TODO implemented actual edit on array
-  addOrEditSeller(newSeller: Seller) : Observable<Seller> {
+  addOrEditSeller(newSeller: Seller) : Observable<number> {
     if(newSeller.id !== undefined) {
       //this.sellerList.find(newSeller.id);
-      return Observable.of(newSeller);
+      return Observable.of(200);
     } else {
-      this.sellerList.push(newSeller);
-      return Observable.of(newSeller);
+      
+      return Observable.of(201);
+    }
+  }
+
+  addOrEditProduct(newSeller: Product) : Observable<number> {
+    if(newSeller.id !== undefined) {
+      //this.sellerList.find(newSeller.id);
+      return Observable.of(200);
+    } else {
+      
+      return Observable.of(201);
     }
   }
 

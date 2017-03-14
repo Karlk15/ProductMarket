@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement, Type, NgModule, Input, Component } from '@angular/core';
-
+import { DebugElement, Type, NgModule, Input, Component, Injectable, ViewChild, OnDestroy, getDebugNode } from '@angular/core';
+import {CommonModule} from '@angular/common';
 import { SellerListComponent } from './seller-list.component';
 import { MockService } from '../mock.service';
 import { SellersService } from '../sellers.service';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalModule, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
 import { FormsModule } from '@angular/forms';
@@ -31,25 +31,12 @@ describe('SellerListComponent', () => {
   };
 
   let mockModal = {
-    result: {
-        then: function(confirmCallback, cancelCallback) {
-            //Store the callbacks for later when the user clicks on the OK or Cancel button of the dialog
-            this.confirmCallBack = confirmCallback;
-            this.cancelCallback = cancelCallback;
-        },
-        catch: function (cancelCallback) {
-            this.cancelCallback = cancelCallback;
-            return this;
-        }
-    },
-    close: function( item ) {
-        //The user clicked OK on the modal dialog, call the stored confirm callback with the selected item
-        this.result.confirmCallBack( item );
-    },
-    dismiss: function( type ) {
-        //The user clicked cancel on the modal dialog, call the stored cancel callback
-        this.result.cancelCallback( type );
-    }
+    open: jasmine.createSpy('modal.open').and.returnValue({ 
+        result: { 
+          then: jasmine.createSpy('modal.result.then'),
+          catch: jasmine.createSpy('')
+      } 
+    })
   };
 
   beforeEach(async(() => {
@@ -60,7 +47,8 @@ describe('SellerListComponent', () => {
         {provide: Router, useValue: mockRouter},
         {provide: NgbModal, useValue: mockModal},
         {provide: ToastrService, useValue: mockToastr}
-      ]
+      ],
+      imports: [ CommonModule, NgbModalModule.forRoot() ]
     })
     .compileComponents();
   }));
@@ -88,11 +76,16 @@ describe('SellerListComponent', () => {
   });
 
 
-  describe('when onAddSellerClicked is called', () => {
-    xit('should open modal', () => {
-      spyOn(component, 'onAddSellerClicked').and.returnValue(mockModal);
+  describe('when onAddSeller is called', () => {
+    xit('should call addOrEditSeller()', () => {
 
+      spyOn(component, 'onAddSeller');
+
+      component.onAddSeller();
+
+      expect(mockService.addOrEditSeller).toHaveBeenCalled();
     });
   });
+
 
 });
