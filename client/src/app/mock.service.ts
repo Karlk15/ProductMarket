@@ -25,24 +25,13 @@ export class MockService {
     this.productList = [];
     this.productList.push({id: 0, product: {id: 0, name: 'Kalli', price: 100, quantitySold: 20, quantityInStock: 10, imagePath: 'img1'}});
     this.productList.push({id: 0, product: {id: 1, name: 'Keli', price: 200, quantitySold: 30, quantityInStock: 20, imagePath: 'img2'}});
-    this.productList.push({id: 2, product: {id: 2, name: 'Danni', price: 300, quantitySold: 40, quantityInStock: 300, imagePath: 'img3'}});
+    this.productList.push({id: 1, product: {id: 2, name: 'Danni', price: 300, quantitySold: 40, quantityInStock: 300, imagePath: 'img3'}});
   }
 
   getSellers() : Observable<Seller[]> {
     return Observable.of(this.sellerList);
   }
 
-
-  // TODO implemented actual edit on array
-  addOrEditSeller(newSeller: Seller) : Observable<Seller> {
-    if(newSeller.id !== undefined) {
-      //this.sellerList.find(newSeller.id);
-      return Observable.of(newSeller);
-    } else {
-      this.sellerList.push(newSeller);
-      return Observable.of(newSeller);
-    }
-  }
 
   getSellerById(id: number): Observable<Seller> {
     let seller: Seller;
@@ -65,7 +54,6 @@ export class MockService {
       }
     }
 
-    console.log(products);
     return Observable.of(products);
   }
 

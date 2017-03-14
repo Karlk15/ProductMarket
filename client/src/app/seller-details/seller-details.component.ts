@@ -104,6 +104,7 @@ export class SellerDetailsComponent implements OnInit {
       return 0;
     }
 
+
     let sortedProducts = this.products.slice();
     sortedProducts = sortedProducts.sort(compare);
 
