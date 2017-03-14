@@ -11,33 +11,34 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
 
-    TestBed.configureTestingModule({  
-      
+    TestBed.configureTestingModule({
+
       imports: [
         RouterModule.forRoot([{
           path: '',
           redirectTo: 'sellers',
           pathMatch: 'full'
-          }, {
+        }, {
             path: 'sellers',
             component: SellerListComponent
           }, {
             path: 'seller/:id',
             component: SellerDetailsComponent
-        }])
+          }])
       ],
-      providers: [{provide: Router}],
+      providers: [{ provide: Router }],
       declarations: [
         AppComponent,
         SellerListComponent,
         SellerDetailsComponent
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
 
     TestBed.compileComponents();
 
   });
+
 
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -57,5 +58,5 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to the Market Place');
   }));
-  
+
 });
