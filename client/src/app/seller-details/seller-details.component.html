@@ -2,11 +2,11 @@
   {{sellerDetails.name}}
   <br />
   <img [src]="sellerDetails.imagePath" class="imgStyle" />
-  <br />Flokkur: {{sellerDetails.category}}
+  <br />Group: {{sellerDetails.category}}
 </div>
 
 <ngb-alert *ngIf="showAlert" [dismissible]="false">
-    <strong>No products found: </strong> Seller does not have any products
+  <strong>No products found: </strong> Seller does not have any products
 </ngb-alert>
 
 <button class="btn btn-primary" (click)="onAddProduct()">New Product</button>
