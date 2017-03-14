@@ -3,11 +3,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 import { Seller } from './interfaces/seller';
+import { Product } from './interfaces/product';
 
 @Injectable()
 export class MockService {
 
   private sellerList: Seller[];
+  private productList: Product[];
 
   constructor() { 
     this.sellerList = [];
@@ -20,8 +22,9 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
+
   // TODO implemented actual edit on array
-  /*addOrEditSeller(newSeller: Seller) : Observable<Seller> {
+  addOrEditSeller(newSeller: Seller) : Observable<Seller> {
     if(newSeller.id !== undefined) {
       //this.sellerList.find(newSeller.id);
       return Observable.of(newSeller);
@@ -34,10 +37,14 @@ export class MockService {
   getSellerById(id: number): Observable<Seller> {
     let seller: Seller;
 
-    this.sellerList.find();
-
     return Observable.of(seller)
-  }*/
+  }
+
+  getProductsById(id: number): Observable<Product[]> {
+    let product: Product[] = [];
+
+    return Observable.of(product);
+  }
 
 
 }
