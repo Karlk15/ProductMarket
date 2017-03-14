@@ -68,6 +68,7 @@ describe('SellerDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.showAlert).toBeFalsy();
   });
 
   xdescribe('when ngOnInit is called', () => {
