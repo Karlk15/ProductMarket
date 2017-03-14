@@ -65,10 +65,12 @@ describe('SellerDetailsComponent', () => {
     fixture.detectChanges();
   });
 
+
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(component.showAlert).toBeFalsy();
   });
+
 
   describe('when TopTen is called', () => {
       

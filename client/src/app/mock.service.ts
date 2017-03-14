@@ -32,7 +32,6 @@ export class MockService {
     return Observable.of(this.sellerList);
   }
 
-
   getSellerById(id: number): Observable<Seller> {
     let seller: Seller;
 
