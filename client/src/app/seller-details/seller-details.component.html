@@ -1,16 +1,24 @@
-<div *ngIf="sellerDetails" class="border text-center" id="sellerPadding">
-  {{sellerDetails.name}}
+<div *ngIf="sellerDetails" class="SellerBoarder text-center" id="sellerPadding">
+  <strong>{{sellerDetails.name}}</strong>
   <br />
   <img [src]="sellerDetails.imagePath" class="imgStyle" />
   <br />Category: {{sellerDetails.category}}
-  <button class="btn btn-primary" (click)="onEditSeller()">Edit</button>
+
+  <div>
+    <button class="btn-color" (click)="onEditSeller()" id="focus">
+      <img src="http://iconmaker.net/gd/makefg.php?i=icons/Application/Document-Edit.png&r=255&g=255&b=255" class="Logo"/>
+      Edit Profile
+    </button>
+    <button class="btn-color" (click)="onAddProduct()" id="focus">
+      <img src="http://www.sveikatasu4life.com/uploads/2/0/5/9/20595306/2319779_orig.png" class="Logo" />
+      Add Product
+    </button>
+  </div>
 </div>
 
 <ngb-alert *ngIf="showAlert" [dismissible]="false">
   <strong>No products found: </strong> Seller does not have any products
 </ngb-alert>
-
-<button class="btn btn-primary" (click)="onAddProduct()">New Product</button>
 
 <ngb-tabset>
   <ngb-tab title="All Products">
@@ -18,7 +26,7 @@
       <div class="container body-content" id="productsPadding">
         <div class="row" style="display: block;">
           <div *ngFor="let p of products">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="productId" (click)="onEditProduct(p)">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="focus" (click)="onEditProduct(p)">
               <!--<app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">-->
               <app-product-card [sellerProduct]="p">
 
@@ -34,7 +42,7 @@
       <div class="container body-content" id="productsPadding">
         <div class="row" style="display: block;">
           <div *ngFor="let p of TopTen()">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="productId">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="focus">
               <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
 
               </app-product-card>

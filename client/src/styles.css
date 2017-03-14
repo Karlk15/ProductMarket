@@ -1,28 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
 .border {
-    height: 270px;
+    height: 290px;
     width: 230px;
-    border: 2px solid rgb(225, 225, 232);
-    border-radius: 6px;
+    border: 1px solid rgb(225, 225, 232);
+    border-radius: 2px;
     box-shadow: 0px 0px 4px 0px #808080;
 
 }
 
-#productId:hover{
-  cursor:pointer;
-  box-shadow: 0px 0px 30px 0px #6d6e70;
+.SellerBoarder {
+  height: 320px;
+  width: 380px;
+  border: 1px solid rgb(225, 225, 232);
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px 0px #808080;
 }
-
-#go-Home-Pointer{
+.btn-color{
+  cursor:pointer;
   color: rgb(255, 255, 255);
   font-family: verdana, Arial, sans-serif;
-  font-size: 300%;
-  cursor:pointer;
+  background: rgb(54, 53, 52); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* Standard syntax */
 }
 
 .containerSeperator {
-    height: 300px;
+    height: 320px;
     float: left;
 }
 
@@ -30,6 +36,17 @@
   width: 190px;
   height: 190px;
   border-radius: 6px;
+}
+
+#focus:hover{
+  cursor:pointer;
+  box-shadow: 0px 0px 15px 0px #6d6e70;
+}
+
+#title{
+  color: rgb(255, 255, 255);
+  font-family: verdana, Arial, sans-serif;
+  font-size: 300%;
 }
 
 #sellerPadding{
@@ -44,7 +61,7 @@
 
 #grad{
   padding-top: 35px;
-  padding-bottom: 35px;
+  padding-bottom: 5px;
   background: rgb(54, 53, 52); /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(rgb(93, 93, 91), rgb(42, 41, 41), rgb(16, 17, 16)); /* For Opera 11.1 to 12.0 */
@@ -53,13 +70,6 @@
 }
 
 
-#home{
-  float: left;
-}
-
-.btn-color{
-  cursor:pointer;
-  color: rgb(255, 255, 255);
-  font-family: verdana, Arial, sans-serif;
-  background: rgb(42, 41, 41);
+.Logo{
+  height: 30px;
 }
