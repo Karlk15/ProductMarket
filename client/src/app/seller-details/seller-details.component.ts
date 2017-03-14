@@ -19,9 +19,9 @@ export class SellerDetailsComponent implements OnInit {
 
   private sellerDetails: Seller;
   private sellerID: number;
-  private products: Product[];
+  public products: Product[];
   private showAlert: Boolean;
-  private topTenProduct: Product[] = new Array(10);
+  private topTenProduct: Product[];
 
   constructor(private service: SellersService,
     private router: Router,
@@ -30,6 +30,7 @@ export class SellerDetailsComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
+    
     this.route.params.subscribe((params: Params) => {
       this.sellerID = +params['id'];
     });
@@ -97,7 +98,7 @@ export class SellerDetailsComponent implements OnInit {
   }
 
   TopTen(): Product[] {
-
+    console.log("hello");
     function compare(a, b) {
       if (a.quantitySold > b.quantitySold)
         return -1;
@@ -109,6 +110,7 @@ export class SellerDetailsComponent implements OnInit {
     let sortedProducts = this.products.slice();
     sortedProducts = sortedProducts.sort(compare);
 
+    this.topTenProduct = [];
     for (let i = 0; i < 10; i++) {
       this.topTenProduct[i] = sortedProducts[i];
     }
