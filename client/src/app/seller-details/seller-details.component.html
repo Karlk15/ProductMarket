@@ -2,7 +2,8 @@
   {{sellerDetails.name}}
   <br />
   <img [src]="sellerDetails.imagePath" class="imgStyle" />
-  <br />Flokkur: {{sellerDetails.category}}
+  <br />Category: {{sellerDetails.category}}
+  <button class="btn btn-primary" (click)="onEditSeller()">Edit</button>
 </div>
 
 <ngb-alert *ngIf="showAlert" [dismissible]="false">
