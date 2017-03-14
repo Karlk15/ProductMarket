@@ -18,7 +18,7 @@ import { Product } from '../interfaces/product';
 import { } from 'jasmine';
 
 
-describe('SellerDetailsComponent', () => {
+xdescribe('SellerDetailsComponent', () => {
   let component: SellerDetailsComponent;
   let fixture: ComponentFixture<SellerDetailsComponent>;
 
@@ -65,7 +65,7 @@ describe('SellerDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 

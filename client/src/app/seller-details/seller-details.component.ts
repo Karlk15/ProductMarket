@@ -98,7 +98,6 @@ export class SellerDetailsComponent implements OnInit {
   }
 
   TopTen(): Product[] {
-    console.log("hello");
     function compare(a, b) {
       if (a.quantitySold > b.quantitySold)
         return -1;
