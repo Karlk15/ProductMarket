@@ -23,7 +23,6 @@ describe('SellerDetailsComponent', () => {
   let fixture: ComponentFixture<SellerDetailsComponent>;
 
   let mockService = new MockService();
-  let idOfSeller = 0;
 
   let mockRouter = {
 	  navigate: jasmine.createSpy("navigate")	
@@ -41,7 +40,7 @@ describe('SellerDetailsComponent', () => {
   };
 
   let mockParams = {
-    params: Observable.of({id: idOfSeller})  
+    params: Observable.of({id: 0})  
   };
 
   beforeEach(async(() => {
@@ -72,32 +71,11 @@ describe('SellerDetailsComponent', () => {
     expect(component.showAlert).toBeFalsy();
   });
 
-  xdescribe('when ngOnInit is called', () => {
 
-    xit('sellerID should be equal to params idOfSeller', () => {
-      // Act
-      component.ngOnInit();
-
-      // Assert
-      expect(mockParams.params).toHaveBeenCalled();
-      //expect(component.sellerID).toEqual(idOfSeller);
-    });
-
-
-  });
-
-  xdescribe('when TopTen is called', () => {
+  describe('when TopTen is called', () => {
       
 
-    xit('sellerID should be equal to params idOfSeller', () => {
-      // Arrange
-     
-     // create dummy list
-     component.products = [
-      {id: 1, name: 'two', price: 1, quantitySold: 5, quantityInStock: 1, imagePath: 'two'},
-      {id: 0, name: 'one', price: 1, quantitySold: 10, quantityInStock: 1, imagePath: 'one'},
-      {id: 2, name: 'three', price: 1, quantitySold: 2, quantityInStock: 1, imagePath: 'three'},
-     ];
+    it('sellerID should be equal to params idOfSeller', () => {
 
     const topList: Product[] = [
       {id: 0, name: 'one', price: 1, quantitySold: 10, quantityInStock: 1, imagePath: 'one'},
@@ -108,10 +86,9 @@ describe('SellerDetailsComponent', () => {
       // Act
       const actualList = component.TopTen();
 
-      expect(actualList[0].quantitySold).toEqual(10);
       // Assert
-      //expect(actualList).toEqual(topList);
-      //expect(component.sellerID).toEqual(idOfSeller);
+      expect(actualList[0].quantitySold).toEqual(30);
+
     });
 
 
