@@ -18,7 +18,7 @@ import { Product } from '../interfaces/product';
 import { } from 'jasmine';
 
 
-xdescribe('SellerDetailsComponent', () => {
+describe('SellerDetailsComponent', () => {
   let component: SellerDetailsComponent;
   let fixture: ComponentFixture<SellerDetailsComponent>;
 
@@ -70,7 +70,7 @@ xdescribe('SellerDetailsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('when ngOnInit is called', () => {
+  xdescribe('when ngOnInit is called', () => {
 
     it('sellerID should be equal to params idOfSeller', () => {
       // Act
@@ -84,7 +84,7 @@ xdescribe('SellerDetailsComponent', () => {
 
   });
 
-   describe('when TopTen is called', () => {
+  xdescribe('when TopTen is called', () => {
       
 
     it('sellerID should be equal to params idOfSeller', () => {

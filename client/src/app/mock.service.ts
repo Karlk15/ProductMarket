@@ -3,11 +3,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 import { Seller } from './interfaces/seller';
+import { Product } from './interfaces/product';
 
 @Injectable()
 export class MockService {
 
   private sellerList: Seller[];
+  private productList: Product[];
 
   constructor() { 
     this.sellerList = [];
@@ -36,6 +38,12 @@ export class MockService {
     let seller: Seller;
 
     return Observable.of(seller)
+  }
+
+  getProductsById(id: number): Observable<Product[]> {
+    let product: Product[] = [];
+
+    return Observable.of(product);
   }
 
 
