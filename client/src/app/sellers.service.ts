@@ -45,6 +45,7 @@ export class SellersService {
   }
 
   addOrEditProduct(newProduct: Product,sellerID: number): Observable<number> {
+
     if(newProduct.id !== undefined) {
       return this.http.put(`http://localhost:5000/api/sellers/${sellerID}/products/${newProduct.id}`, newProduct)
         .map(response => {

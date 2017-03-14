@@ -42,7 +42,7 @@ export class MockService {
       }
     }
 
-    return Observable.of(seller)
+    return Observable.of(seller);
   }
 
   getProductsById(id: number): Observable<Product[]> {

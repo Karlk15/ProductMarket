@@ -87,12 +87,4 @@ describe('SellerListComponent', () => {
 
   });
 
-
-  describe('when onAddSellerClicked is called', () => {
-    xit('should open modal', () => {
-      spyOn(component, 'onAddSellerClicked').and.returnValue(mockModal);
-
-    });
-  });
-
 });

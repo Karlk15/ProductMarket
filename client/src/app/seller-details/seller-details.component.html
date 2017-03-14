@@ -40,7 +40,7 @@
       <div class="container body-content" id="productsPadding">
         <div class="row" style="display: block;">
           <div *ngFor="let p of TopTen()">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="focus">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 containerSeperator border" id="focus" (click)="onEditProduct(p)">
               <app-product-card [sellerProduct]="p" (sellerProductUpdated)="onProductEdited($event)">
 
               </app-product-card>

@@ -53,7 +53,7 @@ describe('SellerDetailsComponent', () => {
         { provide: NgbModal, useValue: mockModal},
         { provide: ToastrService, useValue: mockToastr }
       ],
-      imports: [NgbModule.forRoot(), ],
+      imports: [NgbModule.forRoot() ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents()
@@ -73,7 +73,7 @@ describe('SellerDetailsComponent', () => {
   describe('when TopTen is called', () => {
       
 
-    it('sellerID should be equal to params idOfSeller', () => {
+    it('quantitySold should equal 30(biggest number of seller with id = 0)', () => {
 
     const topList: Product[] = [
       {id: 0, name: 'one', price: 1, quantitySold: 10, quantityInStock: 1, imagePath: 'one'},
